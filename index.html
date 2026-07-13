@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="300">
+<title>🌿 Dashboard Indoor - La Ronda</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#0f0f0f; color:#e0e0e0; padding:20px; }
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid #2a2a2a; }
+.header h1 { font-size:26px; font-weight:800; background:linear-gradient(135deg,#4ade80,#22c55e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.header span { font-size:14px; color:#888; }
+.badge { display:inline-block; font-size:11px; padding:3px 8px; border-radius:10px; margin-left:6px; }
+.badge-green { background:#166534; color:#4ade80; }
+.badge-auto { background:#831843; color:#f472b6; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; margin-bottom:24px; }
+.card { background:#1a1a1a; border-radius:16px; padding:20px; border:1px solid #2a2a2a; }
+.card h2 { font-size:15px; font-weight:600; color:#9ca3af; text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+.numero { font-size:42px; font-weight:800; color:#4ade80; line-height:1; }
+.numero small { font-size:16px; font-weight:400; color:#888; }
+.bar-container { display:flex; gap:6px; align-items:center; margin:4px 0; }
+.bar-label { width:110px; font-size:13px; color:#ccc; text-align:right; }
+.bar { flex:1; height:22px; border-radius:6px; background:#2a2a2a; }
+.bar-fill { height:100%; border-radius:6px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-size:11px; font-weight:600; color:#fff; min-width:30px; }
+
+/* ── Timeline Flora ── */
+.timeline { margin-top:16px; }
+.timeline-bar { position:relative; height:32px; background:#2a2a2a; border-radius:16px; overflow:hidden; }
+.timeline-progress { height:100%; background:linear-gradient(90deg,#4ade80,#22c55e,#16a34a); border-radius:16px; transition:width .5s; display:flex; align-items:center; justify-content:flex-end; padding-right:10px; font-size:12px; font-weight:700; color:#000; min-width:40px; }
+.timeline-weeks { display:flex; justify-content:space-between; margin-top:4px; font-size:11px; color:#555; padding:0 4px; }
+.timeline-weeks span { position:relative; }
+.timeline-weeks span.week-active { color:#4ade80; font-weight:700; }
+.timeline-info { display:flex; justify-content:space-between; margin-top:8px; font-size:13px; }
+.timeline-info div { text-align:center; }
+.timeline-info .label { color:#888; font-size:11px; }
+.timeline-info .value { color:#e0e0e0; font-size:18px; font-weight:700; }
+.timeline-info .value.highlight { color:#4ade80; }
+
+.rooms { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.room { background:#1a1a1a; border-radius:16px; padding:20px; border:1px solid #2a2a2a; }
+.room h2 { font-size:18px; font-weight:700; margin-bottom:12px; }
+.room h3 { font-size:13px; font-weight:600; margin-bottom:6px; margin-top:14px; }
+.room.flora { border-color:#ef444433; } .room.flora h2 { color:#ef4444; }
+.room.vege { border-color:#3b82f633; } .room.vege h2 { color:#3b82f6; }
+.room ul { list-style:none; }
+.room li { padding:6px 0; border-bottom:1px solid #222; font-size:13px; display:flex; justify-content:space-between; }
+.room li:last-child { border:none; }
+.riego-item { padding:8px 0; border-bottom:1px solid #222; font-size:13px; }
+.riego-item:last-child { border:none; }
+.riego-fecha { color:#888; font-size:11px; }
+.riego-ec { color:#4ade80; font-weight:600; }
+.riego-ph { color:#60a5fa; }
+.alert { background:#f59e0b11; border-left:3px solid #f59e0b; padding:8px 12px; border-radius:6px; margin:4px 0; font-size:13px; color:#fbbf24; }
+.alert-danger { background:#ef444411; border-left:3px solid #ef4444; color:#f87171; }
+.alert-success { background:#4ade8011; border-left:3px solid #4ade80; color:#4ade80; }
+.alert-info { background:#3b82f611; border-left:3px solid #3b82f6; color:#60a5fa; }
+.footer { text-align:center; margin-top:24px; font-size:12px; color:#555; border-top:1px solid #222; padding-top:16px; }
+.footer .refresh-note { color:#444; font-size:11px; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>🌿 Dashboard Indoor · La Ronda</h1>
+    <div style="text-align:right;"><span>13/07/2026 11:30</span><br><span class="badge badge-green" style="margin-left:0;">⏱️ auto-refresh 5 min</span></div>
+</div>
+
+<div class="grid">
+    <div class="card"><h2>🌱 Total Plantas</h2><div class="numero">168</div></div>
+    <div class="card"><h2>🧬 Genéticas</h2><div class="numero">24 <small>distintas</small></div></div>
+    <div class="card"><h2>📊 Por Tipo</h2><div class="bar-container"><div class="bar-label">Esqueje</div><div class="bar"><div class="bar-fill" style="width:72.02380952380952%;background:#4ade80">121</div></div></div><div class="bar-container"><div class="bar-label">Semilla</div><div class="bar"><div class="bar-fill" style="width:20.833333333333336%;background:#4ade80">35</div></div></div><div class="bar-container"><div class="bar-label">Autofloreciente</div><div class="bar"><div class="bar-fill" style="width:15%;background:#4ade80">12</div></div></div></div>
+    <div class="card"><h2>🌱 Por Fase</h2><div class="bar-container"><div class="bar-label">Flora</div><div class="bar"><div class="bar-fill" style="width:44.642857142857146%;background:#8B5CF6">75</div></div></div><div class="bar-container"><div class="bar-label">Crecimiento</div><div class="bar"><div class="bar-fill" style="width:37.5%;background:#3B82F6">63</div></div></div><div class="bar-container"><div class="bar-label">Vegetativo</div><div class="bar"><div class="bar-fill" style="width:17.857142857142858%;background:#EF4444">30</div></div></div></div>
+</div>
+
+<!-- ════ FLORA TIMELINE ════ -->
+<div class="card" style="margin-bottom:24px;">
+    <h2>🔥 Flora — Timeline</h2>
+    <div class="timeline">
+        <div class="timeline-bar">
+            <div class="timeline-progress" style="width:50%;">S6</div>
+        </div>
+        <div class="timeline-weeks"><span class="">🌱 S1</span><span class="">🌱 S2</span><span class="">🌿 S3</span><span class="">🌿 S4</span><span class="">🌿 S5</span><span class="week-active">🌿 S6</span><span class="">🍅 S7</span><span class="">🍅 S8</span><span class="">🍅 S9</span><span class="">🍅 S10</span></div>
+        <div class="timeline-info">
+            <div><span class="label">Día</span><br><span class="value">35</span></div>
+            <div><span class="label">Semana</span><br><span class="value highlight">6 / 10</span></div>
+            <div><span class="label">Progreso</span><br><span class="value highlight">50%</span></div>
+            <div><span class="label">Restan</span><br><span class="value">35 días</span></div>
+            <div><span class="label">Cosecha est.</span><br><span class="value">18/08</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- ════ SALAS ════ -->
+<h2 style="margin-bottom:14px;font-size:18px;">🏠 Salas</h2>
+<div class="rooms">
+<div class="room flora"><h2>🔥 Sala de Flora · Día 35</h2><p style="font-size:12px;color:#666;margin-top:-6px;margin-bottom:10px;">🌱 Inicio 09/06 · 🍅 Cosecha est. 18/08</p><li><span>Tropicanna</span><span>29</span></li><li><span>Sur Tangie</span><span>25</span></li><li><span>Jack's Lemonade</span><span>8</span></li><li><span>Kings Tart</span><span>8</span></li><li><span>Cali Orange</span><span>4</span></li><li><span>Tropicanna (15L)</span><span>1</span></li></ul><p style="margin-top:8px;font-size:13px;color:#666;">Total: <strong style="color:#ccc;">75</strong></p><div style="margin-top:12px;padding-top:10px;border-top:1px solid #222;"><p style="font-size:13px;color:#888;">📝 Último riego:</p><p style="font-size:13px;color:#ccc;">06/07 — 100L · AB:5 / C:3.5 · EC 1.9</p></div></div><div class="room vege"><h2>🌿 Sala Vege · Catamarca</h2><h3 style="color:#3B82F6;">🌱 Crecimiento (81)</h3><ul><li><span>SM</span><span>1</span></li><li><span>No identificada</span><span>1</span></li><li><span>Mochi Pop 4</span><span>1</span></li><li><span>Northern Light</span><span>1</span></li><li><span>Jealousy</span><span>2</span></li><li><span>Mochi Pop 1</span><span>2</span></li><li><span>After Eight</span><span>3</span></li><li><span>Sweet Cherry Kush</span><span>3</span></li><li><span>Zberry</span><span>4</span></li><li><span>Mimosa Kush</span><span>4</span></li><li><span>Apple Cookies</span><span>5</span></li><li><span>Florida OG</span><span>6</span></li><li><span>Mountain Cake</span><span>8</span></li><li><span>Champ</span><span>8</span></li><li><span>Kinks Tart</span><span>9</span></li><li><span>Chizito</span><span>11</span></li><li><span>Fog3</span><span>12</span></li></ul><p style="margin-top:14px;padding-top:10px;border-top:1px solid #222;font-size:13px;color:#666;">Total: <strong style="color:#ccc;">81</strong></p></div><div class="room vege" style="border-color:#EC489933;"><h2 style="color:#EC4899;">⚡ Sala C · Automáticas</h2><h3 style="color:#EC4899;">Autoflorecientes (12)</h3><ul><li><span>Crítica al Auto XXL</span><span>12 · desde 25/05</span></li></ul><p style="margin-top:14px;padding-top:10px;border-top:1px solid #222;font-size:13px;color:#666;">Total: <strong style="color:#ccc;">12</strong></p></div></div><div class="card" style="margin-top:24px;border-color:#8B5CF633;">
+    <h2 style="color:#8B5CF6;">🔮 Próximo Ciclo de Flora</h2>
+    <div class="timeline-info" style="justify-content:flex-start;gap:30px;margin-bottom:12px;">
+        <div><span class="label">Entrada estimada</span><br><span class="value highlight" style="color:#8B5CF6;">09/08</span></div>
+        <div><span class="label">Faltan</span><br><span class="value">26 días</span></div>
+        <div><span class="label">Plantas listas</span><br><span class="value highlight" style="color:#8B5CF6;">81</span></div>
+    </div><div class="bar-container" style="margin-top:4px;"><div class="bar-label">Por genética</div><div class="bar" style="flex:3;"></div></div><div class="bar-container"><div class="bar-label">SM</div><div class="bar"><div class="bar-fill" style="width:10%;background:#8B5CF6">1</div></div></div><div class="bar-container"><div class="bar-label">No identificada</div><div class="bar"><div class="bar-fill" style="width:10%;background:#3B82F6">1</div></div></div><div class="bar-container"><div class="bar-label">Mochi Pop 4</div><div class="bar"><div class="bar-fill" style="width:10%;background:#EF4444">1</div></div></div><div class="bar-container"><div class="bar-label">Northern Light</div><div class="bar"><div class="bar-fill" style="width:10%;background:#F59E0B">1</div></div></div><div class="bar-container"><div class="bar-label">Jealousy</div><div class="bar"><div class="bar-fill" style="width:10%;background:#10B981">2</div></div></div><div class="bar-container"><div class="bar-label">Mochi Pop 1</div><div class="bar"><div class="bar-fill" style="width:10%;background:#EC4899">2</div></div></div><div class="bar-container"><div class="bar-label">After Eight</div><div class="bar"><div class="bar-fill" style="width:10%;background:#6B7280">3</div></div></div><div class="bar-container"><div class="bar-label">Sweet Cherry Kush</div><div class="bar"><div class="bar-fill" style="width:10%;background:#8B5CF6">3</div></div></div><div class="bar-container"><div class="bar-label">Zberry</div><div class="bar"><div class="bar-fill" style="width:10%;background:#3B82F6">4</div></div></div><div class="bar-container"><div class="bar-label">Mimosa Kush</div><div class="bar"><div class="bar-fill" style="width:10%;background:#EF4444">4</div></div></div><div class="bar-container"><div class="bar-label">Apple Cookies</div><div class="bar"><div class="bar-fill" style="width:10%;background:#F59E0B">5</div></div></div><div class="bar-container"><div class="bar-label">Florida OG</div><div class="bar"><div class="bar-fill" style="width:10%;background:#10B981">6</div></div></div><div class="bar-container"><div class="bar-label">Mountain Cake</div><div class="bar"><div class="bar-fill" style="width:10%;background:#EC4899">8</div></div></div><div class="bar-container"><div class="bar-label">Champ</div><div class="bar"><div class="bar-fill" style="width:10%;background:#6B7280">8</div></div></div><div class="bar-container"><div class="bar-label">Kinks Tart</div><div class="bar"><div class="bar-fill" style="width:11.11111111111111%;background:#8B5CF6">9</div></div></div><div class="bar-container"><div class="bar-label">Chizito</div><div class="bar"><div class="bar-fill" style="width:13.580246913580247%;background:#3B82F6">11</div></div></div><div class="bar-container"><div class="bar-label">Fog3</div><div class="bar"><div class="bar-fill" style="width:14.814814814814813%;background:#EF4444">12</div></div></div><p style="margin-top:8px;font-size:13px;color:#666;">🌱 Estas plantas están en Crecimiento y pasarán a Flora el próximo ciclo.</p></div><div class="grid" style="margin-top:20px;"><div class="card"><h2>⚠️ Alertas</h2><div class="alert-info">💡 Semana 4-5 de flora — cambiar a nutrientes de engorde si no lo hiciste</div></div><div class="card"><h2>📋 Últimos riegos</h2><div class="riego-item"><span class="riego-fecha">09/07/2026</span> — <strong>12</strong><br><span style="color:#888;font-size:12px;">4 cortes de poda apical (Achu)</span></div><div class="riego-item"><span class="riego-fecha">09/07/2026</span> — <strong>25</strong><br><span style="color:#888;font-size:12px;">4 cortes de poda apical (Achu)</span></div><div class="riego-item"><span class="riego-fecha">09/07/2026</span> — <strong>7</strong><br><span style="color:#888;font-size:12px;">4 cortes de poda apical (Achu)</span></div><div class="riego-item"><span class="riego-fecha">09/07/2026</span> — <strong>3</strong><br><span style="color:#888;font-size:12px;">2 cortes de poda apical (Achu)</span></div><div class="riego-item"><span class="riego-fecha">09/07/2026</span> — <strong>18</strong><br><span style="color:#888;font-size:12px;">2 cortes de poda apical (Achu)</span></div><div class="riego-item"><span class="riego-fecha">09/07/2026</span> — <strong>4</strong><br><span style="color:#888;font-size:12px;">4 cortes de poda apical (Achu)</span></div><div class="riego-item"><span class="riego-fecha">06/07/2026</span> — <strong>Sala de Flora</strong> · EC <span class="riego-ec">1.9</span><br><span style="color:#888;font-size:12px;">100L - AB:5 / C:3.5</span></div><div class="riego-item"><span class="riego-fecha">19/06/2026</span> — <strong>Sala de Flora</strong> · EC <span class="riego-ec">1.9</span> · pH <span class="riego-ph">5.8</span><br><span style="color:#888;font-size:12px;">Riego general sala de flora</span></div></div></div><div class="footer">🌙 Dashboard · La Ronda · Auto-refresh cada 5 min<br><span class="refresh-note">Última actualización: 13/07/2026 11:30</span></div></body></html>
