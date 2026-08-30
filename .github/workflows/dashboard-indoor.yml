@@ -1,0 +1,61 @@
+name: Dashboard Indoor Auto
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Crear token.json desde secrets
+        run: |
+          python3 - <<'EOF'
+          import json, os
+          tok = {
+            "token": "",
+            "refresh_token": os.environ["GOOGLE_REFRESH_TOKEN"],
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "client_id": os.environ["GOOGLE_CLIENT_ID"],
+            "client_secret": os.environ["GOOGLE_CLIENT_SECRET"],
+            "scopes": "https://www.googleapis.com/auth/spreadsheets",
+            "expiry": "0"
+          }
+          json.dump(tok, open("token.json", "w"), indent=2)
+          print("token.json creado")
+          EOF
+        env:
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+
+      - name: Generar dashboard
+        run: python3 scripts/generar_dashboard_indoor.py
+        env:
+          GOOGLE_TOKEN_PATH: ${{ github.workspace }}/token.json
+          DASHBOARD_OUT: ${{ github.workspace }}/index.html
+
+      - name: Commit y push si hay cambios
+        run: |
+          git config user.name "larondabariloche-stack"
+          git config user.email "larondabariloche@gmail.com"
+          if ! git diff --quiet; then
+            git add index.html
+            git commit -m "Dashboard indoor auto-$(date +'%d/%m %H:%M') [GitHub Actions]"
+            git push origin main
+            echo "Pusheado ✅"
+          else
+            echo "Sin cambios"
+          fi
