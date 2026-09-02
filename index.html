@@ -3,149 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏭 Fábrica La Ronda — Bariloche</title>
+<title>💊 La Ronda Bariloche — Panel</title>
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:24px; }
 h1 { color:var(--dorado); font-size:1.9rem; }
 .sub { color:#9aa; font-size:.9rem; margin:4px 0 24px; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
-.seccion { background:#16281b; border:1px solid #2a4a33; border-radius:14px; padding:18px;
-            display:flex; flex-direction:column; gap:12px; }
-.head { display:flex; align-items:center; gap:12px; text-decoration:none; color:#e8e8e8; }
-.ico { font-size:2rem; }
-.t { font-size:1.25rem; font-weight:700; color:var(--dorado); }
-.flecha { margin-left:auto; color:var(--dorado); font-size:1.3rem; }
-.desc { color:#aab; font-size:.85rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:20px; }
+.area { background:#16281b; border:1px solid #2a4a33; border-radius:16px; padding:22px;
+         display:flex; flex-direction:column; gap:14px; }
+.head { display:flex; align-items:center; gap:14px; text-decoration:none; color:#e8e8e8; }
+.ico { font-size:2.6rem; }
+.t { font-size:1.5rem; font-weight:700; color:var(--dorado); }
+.flecha { margin-left:auto; color:var(--dorado); font-size:1.5rem; }
+.desc { color:#aab; font-size:.9rem; }
 .pend { align-self:flex-start; background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a;
-         font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:999px; }
+         font-size:.8rem; font-weight:700; padding:4px 12px; border-radius:999px; }
 .pend.ok { background:#1d3a24; border-color:#3f7a4f; color:#b6e6c3; }
-.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:12px; }
-.fechas h3 { color:var(--dorado); font-size:.9rem; margin-bottom:8px; }
-.tbody-wrap { max-height:200px; overflow-y:auto; }
-table { width:100%; border-collapse:collapse; font-size:.82rem; }
-th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }
-td { padding:5px 4px; border-bottom:1px solid #1f3626; vertical-align:top; }
-td.f { white-space:nowrap; color:#c8c8c8; padding-right:10px; }
-td.chk { width:24px; }
-td.cat { white-space:nowrap; color:#c8c8c8; font-size:.74rem; text-align:right; }
-.tf { color:#9aa; font-size:.75rem; }
-.det { color:#778; font-size:.78rem; margin-top:1px; }
-tr.hecha td { opacity:.45; text-decoration:line-through; }
-.entrar { display:inline-block; margin-top:2px; background:var(--dorado); color:#0d2d1a;
-           text-decoration:none; font-weight:700; font-size:.85rem; border-radius:8px;
-           padding:8px 14px; text-align:center; }
-.chk-tarea { width:15px; height:15px; accent-color:var(--dorado); cursor:pointer; }
-#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:10px; margin-bottom:12px; }
-#modo-lectura { display:none; background:#2a1a3a; border:1px solid #7a4fa0; color:#d9b6e6; padding:8px 14px; border-radius:10px; margin-bottom:12px; font-size:.85rem; }
+.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; }
+.fechas h3 { color:var(--dorado); font-size:.95rem; margin-bottom:8px; }
+table { width:100%; border-collapse:collapse; font-size:.85rem; }
+td { padding:6px 4px; border-bottom:1px solid #1f3626; vertical-align:top; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:12px; }
+.det { color:#778; font-size:.8rem; }
+.entrar { display:inline-block; margin-top:4px; background:var(--dorado); color:#0d2d1a;
+           text-decoration:none; font-weight:700; font-size:.95rem; border-radius:10px;
+           padding:10px 16px; text-align:center; }
 @media (max-width:700px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-<h1>🏭 Fábrica La Ronda — Bariloche</h1>
-<div class="sub">Sede Catamarca 405 · Actualizado 02/09/2026 12:38 · Panel interno (clave 2019)</div>
-<div id="mi-aviso"></div>
-<div id="modo-lectura">⚠️ API local no detectada (puerto 8082) — <b>modo lectura</b>. Para marcar tareas, la compu debe tener api_cultivo.py corriendo.</div>
+<h1>💊🏭 La Ronda Bariloche</h1>
+<div class="sub">Panel central · Actualizado 02/09/2026 12:47 · Clave 2019 · Generado por Julia 🦞</div>
 <div class="grid">
 
-    <div class="seccion" id="sec-cultivo">
-      <a class="head" href="cultivo.html">
-        <span class="ico">🌿</span>
-        <span class="t">Cultivo</span>
+    <div class="area" id="area-dispensa">
+      <a class="head" href="dispensa.html">
+        <span class="ico">💊</span>
+        <span class="t">Dispensa</span>
         <span class="flecha">➜</span>
       </a>
-      <p class="desc">Indoor Catamarca 405: flora, vege, automáticas, cosechas y mover de sala.</p>
-      <span class='pend'>1 pendientes</span>
-      <div class="fechas">
-        <h3>📅 Fechas clave</h3>
-        <table><tr><td class='f'>18/08/2026</td><td><b>Pase masivo a flora</b><div class='det'>96 plantas vege → flora</div></td></tr><tr><td class='f'>17/10/2026</td><td><b>Cosecha estimada flora</b><div class='det'>Ciclo de 60 días desde 18/08</div></td></tr><tr><td class='f'>09/08/2026</td><td><b>Cosecha 1 sala flora</b><div class='det'>1.461 g en stock (6 genéticas)</div></td></tr><tr><td class='f'>02/09/2026</td><td><b>Sustrato inerte</b><div class='det'>Planificado para hoy</div></td></tr></table>
-      </div>
-      <div class="fechas">
-        <h3>📋 Tareas <span class='pend'>1 pendientes</span></h3>
-        <div class="tbody-wrap"><table><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='cultivo' data-titulo='Cargar sustrato inerte' ></td><td><b>Cargar sustrato inerte</b><div class='det'>Comprar y reponer en sala</div></td><td class='cat'>🛒 comprar<br><span class='tf'>02/09/2026</span></td></tr></table></div>
-      </div>
-      <a class="entrar" href="cultivo.html">Entrar a Cultivo ➜</a>
-    </div>
-
-    <div class="seccion" id="sec-aceites">
-      <a class="head" href="aceites.html">
-        <span class="ico">💧</span>
-        <span class="t">Aceites</span>
-        <span class="flecha">➜</span>
-      </a>
-      <p class="desc">Producción de aceites: extracción, lotes y fechas de elaboración.</p>
+      <p class="desc">Área de dispensa de La Ronda Bariloche.</p>
       <span class='pend ok'>✓ al día</span>
       <div class="fechas">
-        <h3>📅 Fechas clave</h3>
+        <h3>📅 Próximas fechas</h3>
         <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
       </div>
-      <div class="fechas">
-        <h3>📋 Tareas <span class='pend ok'>✓ al día</span></h3>
-        <div class="tbody-wrap"><table><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
-      </div>
-      <a class="entrar" href="aceites.html">Entrar a Aceites ➜</a>
+      <a class="entrar" href="dispensa.html">Entrar a Dispensa ➜</a>
     </div>
 
-    <div class="seccion" id="sec-gomitas">
-      <a class="head" href="gomitas.html">
-        <span class="ico">🍬</span>
-        <span class="t">Gomitas</span>
+    <div class="area" id="area-fabrica">
+      <a class="head" href="fabrica.html">
+        <span class="ico">🏭</span>
+        <span class="t">Fábrica</span>
         <span class="flecha">➜</span>
       </a>
-      <p class="desc">Elaboración de gomitas: lotes, sabores y fechas.</p>
-      <span class='pend ok'>✓ al día</span>
+      <p class="desc">Fábrica La Ronda: cultivo, aceites, gomitas e infraestructura.</p>
+      <span class='pend'>2 pendientes</span>
       <div class="fechas">
-        <h3>📅 Fechas clave</h3>
-        <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
+        <h3>📅 Próximas fechas</h3>
+        <table><tr><td class='f'>17/10/2026</td><td><b>Cosecha estimada flora</b><div class='det'>Ciclo de 60 días desde 18/08</div></td></tr><tr><td class='f'>02/09/2026</td><td><b>Sustrato inerte</b><div class='det'>Planificado para hoy</div></td></tr><tr><td class='f'>18/08/2026</td><td><b>Pase masivo a flora</b><div class='det'>96 plantas vege → flora</div></td></tr><tr><td class='f'>09/08/2026</td><td><b>Cosecha 1 sala flora</b><div class='det'>1.461 g en stock (6 genéticas)</div></td></tr></table>
       </div>
-      <div class="fechas">
-        <h3>📋 Tareas <span class='pend ok'>✓ al día</span></h3>
-        <div class="tbody-wrap"><table><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
-      </div>
-      <a class="entrar" href="gomitas.html">Entrar a Gomitas ➜</a>
-    </div>
-
-    <div class="seccion" id="sec-infraestructura">
-      <a class="head" href="infraestructura.html">
-        <span class="ico">🛠️</span>
-        <span class="t">Infraestructura</span>
-        <span class="flecha">➜</span>
-      </a>
-      <p class="desc">Instalaciones, equipos, arreglos y compras generales.</p>
-      <span class='pend ok'>✓ al día</span>
-      <div class="fechas">
-        <h3>📅 Fechas clave</h3>
-        <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
-      </div>
-      <div class="fechas">
-        <h3>📋 Tareas <span class='pend ok'>✓ al día</span></h3>
-        <div class="tbody-wrap"><table><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
-      </div>
-      <a class="entrar" href="infraestructura.html">Entrar a Infraestructura ➜</a>
+      <a class="entrar" href="fabrica.html">Entrar a Fábrica ➜</a>
     </div>
 </div>
-<div class="sub" style="margin-top:20px">Generado por Julia 🦞 · Datos editables en fabrica.json</div>
-<script>
-const API = 'http://127.0.0.1:8082';
-function aviso(m) { const a = document.getElementById('mi-aviso'); a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
-let ok = false;
-(async () => { try { const r = await fetch(API + '/api/estado', {signal: AbortSignal.timeout(3000)}); ok = r.ok; } catch (e) { ok = false; }
-  if (!ok) document.getElementById('modo-lectura').style.display = 'block'; })();
-document.addEventListener('change', async (e) => {
-  if (!e.target.classList.contains('chk-tarea')) return;
-  const c = e.target;
-  try {
-    const r = await fetch(API + '/api/tarea', {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({sec: c.dataset.key, titulo: c.dataset.titulo, estado: c.checked ? 'hecha' : 'pendiente'}),
-      signal: AbortSignal.timeout(8000)
-    });
-    const d = await r.json();
-    if (d.ok) { c.closest('tr').classList.toggle('hecha', c.checked); aviso('✅ Tarea actualizada'); }
-    else { c.checked = !c.checked; alert('Error: ' + (d.error || 'desconocido')); }
-  } catch (err) { c.checked = !c.checked; alert('API local (:8082) no disponible — no se puede marcar.'); }
-});
-</script>
+<div class="sub" style="margin-top:20px">Datos editables en fabrica.json · Interactivo vía API local :8082</div>
 </body>
 </html>

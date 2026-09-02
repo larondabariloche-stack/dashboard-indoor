@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏭 Fábrica La Ronda — Bariloche</title>
+<style>
+:root { --verde:#0d2d1a; --dorado:#d29914; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:24px; }
+h1 { color:var(--dorado); font-size:1.9rem; }
+.sub { color:#9aa; font-size:.9rem; margin:4px 0 24px; }
+.volver { display:inline-block; margin-bottom:16px; color:var(--dorado); text-decoration:none; font-weight:700; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+.seccion { background:#16281b; border:1px solid #2a4a33; border-radius:14px; padding:18px;
+            display:flex; flex-direction:column; gap:12px; }
+.head { display:flex; align-items:center; gap:12px; text-decoration:none; color:#e8e8e8; }
+.ico { font-size:2rem; }
+.t { font-size:1.25rem; font-weight:700; color:var(--dorado); }
+.flecha { margin-left:auto; color:var(--dorado); font-size:1.3rem; }
+.desc { color:#aab; font-size:.85rem; }
+.pend { align-self:flex-start; background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a;
+         font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:999px; }
+.pend.ok { background:#1d3a24; border-color:#3f7a4f; color:#b6e6c3; }
+.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:12px; }
+.fechas h3 { color:var(--dorado); font-size:.9rem; margin-bottom:8px; }
+.tbody-wrap { max-height:200px; overflow-y:auto; }
+table { width:100%; border-collapse:collapse; font-size:.82rem; }
+th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }
+td { padding:5px 4px; border-bottom:1px solid #1f3626; vertical-align:top; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:10px; }
+td.chk { width:24px; }
+td.cat { white-space:nowrap; color:#c8c8c8; font-size:.74rem; text-align:right; }
+.tf { color:#9aa; font-size:.75rem; }
+.det { color:#778; font-size:.78rem; margin-top:1px; }
+tr.hecha td { opacity:.45; text-decoration:line-through; }
+.entrar { display:inline-block; margin-top:2px; background:var(--dorado); color:#0d2d1a;
+           text-decoration:none; font-weight:700; font-size:.85rem; border-radius:8px;
+           padding:8px 14px; text-align:center; }
+.chk-tarea { width:15px; height:15px; accent-color:var(--dorado); cursor:pointer; }
+#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:10px; margin-bottom:12px; }
+@media (max-width:700px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<a class="volver" href="index.html">🏭 ← La Ronda Bariloche</a>
+<h1>🏭 Fábrica La Ronda — Bariloche</h1>
+<div class="sub">Sede Catamarca 405 · Actualizado 02/09/2026 12:47 · Panel interno (clave 2019)</div>
+<div id="mi-aviso"></div>
+<div class="grid">
+
+    <div class="seccion" id="sec-cultivo">
+      <a class="head" href="cultivo.html">
+        <span class="ico">🌿</span>
+        <span class="t">Cultivo</span>
+        <span class="flecha">➜</span>
+      </a>
+      <p class="desc">Indoor Catamarca 405: flora, vege, automáticas, cosechas y mover de sala.</p>
+      <span class='pend ok'>✓ al día</span>
+      <div class="fechas">
+        <h3>📅 Fechas clave</h3>
+        <table><tr><td class='f'>17/10/2026</td><td><b>Cosecha estimada flora</b><div class='det'>Ciclo de 60 días desde 18/08</div></td></tr><tr><td class='f'>02/09/2026</td><td><b>Sustrato inerte</b><div class='det'>Planificado para hoy</div></td></tr><tr><td class='f'>18/08/2026</td><td><b>Pase masivo a flora</b><div class='det'>96 plantas vege → flora</div></td></tr><tr><td class='f'>09/08/2026</td><td><b>Cosecha 1 sala flora</b><div class='det'>1.461 g en stock (6 genéticas)</div></td></tr></table>
+      </div>
+      <div class="fechas">
+        <h3>📋 Tareas <span class='pend ok'>✓ al día</span></h3>
+        <div class="tbody-wrap"><table><tr class='hecha'><td class='chk'><input type='checkbox' class='chk-tarea' data-key='cultivo' data-titulo='Cargar sustrato inerte' checked ></td><td><b>Cargar sustrato inerte</b><div class='det'>Comprar y reponer en sala</div></td><td class='cat'>🛒 comprar<br><span class='tf'>02/09/2026</span></td></tr></table></div>
+      </div>
+      <a class="entrar" href="cultivo.html">Entrar a Cultivo ➜</a>
+    </div>
+
+    <div class="seccion" id="sec-aceites">
+      <a class="head" href="aceites.html">
+        <span class="ico">💧</span>
+        <span class="t">Aceites</span>
+        <span class="flecha">➜</span>
+      </a>
+      <p class="desc">Producción de aceites: extracción, lotes y fechas de elaboración.</p>
+      <span class='pend'>2 pendientes</span>
+      <div class="fechas">
+        <h3>📅 Fechas clave</h3>
+        <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
+      </div>
+      <div class="fechas">
+        <h3>📋 Tareas <span class='pend'>2 pendientes</span></h3>
+        <div class="tbody-wrap"><table><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='aceites' data-titulo='comprar aceite de oliva' ></td><td><b>comprar aceite de oliva</b><div class='det'></div></td><td class='cat'>🛒 comprar<br><span class='tf'></span></td></tr><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='aceites' data-titulo='alchol 96' ></td><td><b>alchol 96</b><div class='det'></div></td><td class='cat'>✅ hacer<br><span class='tf'></span></td></tr></table></div>
+      </div>
+      <a class="entrar" href="aceites.html">Entrar a Aceites ➜</a>
+    </div>
+
+    <div class="seccion" id="sec-gomitas">
+      <a class="head" href="gomitas.html">
+        <span class="ico">🍬</span>
+        <span class="t">Gomitas</span>
+        <span class="flecha">➜</span>
+      </a>
+      <p class="desc">Elaboración de gomitas: lotes, sabores y fechas.</p>
+      <span class='pend ok'>✓ al día</span>
+      <div class="fechas">
+        <h3>📅 Fechas clave</h3>
+        <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
+      </div>
+      <div class="fechas">
+        <h3>📋 Tareas <span class='pend ok'>✓ al día</span></h3>
+        <div class="tbody-wrap"><table><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
+      </div>
+      <a class="entrar" href="gomitas.html">Entrar a Gomitas ➜</a>
+    </div>
+
+    <div class="seccion" id="sec-infraestructura">
+      <a class="head" href="infraestructura.html">
+        <span class="ico">🛠️</span>
+        <span class="t">Infraestructura</span>
+        <span class="flecha">➜</span>
+      </a>
+      <p class="desc">Instalaciones, equipos, arreglos y compras generales.</p>
+      <span class='pend ok'>✓ al día</span>
+      <div class="fechas">
+        <h3>📅 Fechas clave</h3>
+        <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
+      </div>
+      <div class="fechas">
+        <h3>📋 Tareas <span class='pend ok'>✓ al día</span></h3>
+        <div class="tbody-wrap"><table><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
+      </div>
+      <a class="entrar" href="infraestructura.html">Entrar a Infraestructura ➜</a>
+    </div>
+</div>
+<div class="sub" style="margin-top:20px">Generado por Julia 🦞 · Datos editables en fabrica.json</div>
+<script>
+const API = 'http://127.0.0.1:8082';
+function aviso(m) { const a = document.getElementById('mi-aviso'); a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
+document.addEventListener('change', async (e) => {
+  if (!e.target.classList.contains('chk-tarea')) return;
+  const c = e.target;
+  try {
+    const r = await fetch(API + '/api/tarea', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({sec: c.dataset.key, titulo: c.dataset.titulo, estado: c.checked ? 'hecha' : 'pendiente'}),
+      signal: AbortSignal.timeout(8000)
+    });
+    const d = await r.json();
+    if (d.ok) { c.closest('tr').classList.toggle('hecha', c.checked); aviso('✅ Tarea actualizada'); }
+    else { c.checked = !c.checked; alert('Error: ' + (d.error || 'desconocido')); }
+  } catch (err) { c.checked = !c.checked; alert('API local (:8082) no disponible'); }
+});
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛠️ Infraestructura — La Ronda Bariloche</title>
+<title>💊 Dispensa — La Ronda Bariloche</title>
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -38,9 +38,9 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 </style>
 </head>
 <body>
-<a class="volver" href="fabrica.html">← 🏭 Fábrica La Ronda</a>
-<h1>🛠️ Infraestructura</h1>
-<div class="sub">Instalaciones, equipos, arreglos y compras generales. · Actualizado 02/09/2026 12:47</div>
+<a class="volver" href="index.html">← 💊🏭 La Ronda Bariloche</a>
+<h1>💊 Dispensa</h1>
+<div class="sub">Área de dispensa de La Ronda Bariloche. · Actualizado 02/09/2026 12:47</div>
 <div id="mi-aviso"></div>
 <div class="card">
   <div class="agregar">
@@ -79,7 +79,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 <div class="sub" style="margin-top:16px">Generado por Julia 🦞</div>
 <script>
 const API = 'http://127.0.0.1:8082';
-const SEC = 'infraestructura';
+const SEC = 'dispensa';
 function aviso(m) { const a = document.getElementById('mi-aviso'); a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
 document.addEventListener('change', async (e) => {
   if (!e.target.classList.contains('chk-tarea')) return;
