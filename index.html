@@ -52,7 +52,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 </head>
 <body>
 <h1>💊🏭 La Ronda Bariloche</h1>
-<div class="sub">Panel central · Actualizado 02/09/2026 13:33 · Clave 2019 · Generado por Julia 🦞</div>
+<div class="sub">Panel central · Actualizado 02/09/2026 15:04 · Clave 2019 · Generado por Julia 🦞</div>
 
   <div class="agregar">
     <h3>➕ Agregar directo (elegí sección)</h3>
@@ -76,7 +76,16 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
   </div>
   <script>
   (() => {
-    const API = 'http://127.0.0.1:8082';
+    const API_LOCAL = 'http://127.0.0.1:8082';
+const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
+const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
+let API = API_LOCAL;
+(async () => {
+  try {
+    const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)});
+    if (!r.ok) API = API_NUBE;
+  } catch (e) { API = API_NUBE; }
+})();
     const form = document.getElementById('frm-agregar');
     if (!form) return;
     const tipo = document.getElementById('ag-tipo');
@@ -105,7 +114,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
       if (esTarea) { payload.agregar = true; payload.categoria = form.categoria.value; payload.estado = 'pendiente'; }
       const url = esTarea ? API + '/api/tarea' : API + '/api/fecha';
       try {
-        const r = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'},
+        const r = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
           body: JSON.stringify(payload), signal: AbortSignal.timeout(8000)});
         const d = await r.json();
         if (d.ok) { msg('✅ Guardado en ' + sec); setTimeout(() => location.reload(), 900); }
@@ -160,13 +169,22 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 <div class="sub" style="margin-top:20px">Datos editables en fabrica.json · Interactivo vía API local :8082</div>
 <script>
 (() => {
-  const API = 'http://127.0.0.1:8082';
+  const API_LOCAL = 'http://127.0.0.1:8082';
+const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
+const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
+let API = API_LOCAL;
+(async () => {
+  try {
+    const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)});
+    if (!r.ok) API = API_NUBE;
+  } catch (e) { API = API_NUBE; }
+})();
   document.addEventListener('change', async (e) => {
     if (!e.target.classList.contains('chk-tarea')) return;
     const c = e.target;
     try {
       const r = await fetch(API + '/api/tarea', {
-        method: 'POST', headers: {'Content-Type': 'application/json'},
+        method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
         body: JSON.stringify({sec: c.dataset.key, titulo: c.dataset.titulo, estado: c.checked ? 'hecha' : 'pendiente'}),
         signal: AbortSignal.timeout(8000)
       });

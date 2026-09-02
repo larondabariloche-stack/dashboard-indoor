@@ -147,7 +147,16 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 
 <div class="sub" style="margin-top:16px">Clave de acceso: 2019 · Generado por Julia 🦞 · Planilla: 🌱 Planilla de Cultivo · Interactivo vía API local :8082</div>
 <script>
-const API = 'http://127.0.0.1:8082';
+const API_LOCAL = 'http://127.0.0.1:8082';
+const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
+const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
+let API = API_LOCAL;
+(async () => {
+  try {
+    const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)});
+    if (!r.ok) API = API_NUBE;
+  } catch (e) { API = API_NUBE; }
+})();
 let plantasCache = [];
 
 async function apiOk() {
@@ -159,7 +168,7 @@ async function apiOk() {
 
 async function cargarPlantas() {
   try {
-    const r = await fetch(API + '/api/plantas', {signal: AbortSignal.timeout(5000)});
+    const r = await fetch(API + '/api/plantas', {headers: {'X-API-Key': API_KEY}, signal: AbortSignal.timeout(5000)});
     const d = await r.json();
     if (d.ok) { plantasCache = d.plantas; renderTabla(); actualizarContadores(); }
   } catch (e) { /* modo lectura */ }
@@ -197,7 +206,7 @@ async function moverPlanta(id, btn) {
   try {
     const r = await fetch(API + '/api/mover', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
       body: JSON.stringify({id: id, sala: sala}),
       signal: AbortSignal.timeout(10000)
     });
@@ -252,7 +261,7 @@ const SEC = 'cultivo';
 async function enviar(url, data) {
   try {
     const r = await fetch(url, {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
+      method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
       body: JSON.stringify(data), signal: AbortSignal.timeout(8000)
     });
     const d = await r.json();
@@ -267,7 +276,7 @@ document.addEventListener('change', async (e) => {
   const c = e.target;
   try {
     const r = await fetch(API + '/api/tarea', {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
+      method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
       body: JSON.stringify({sec: c.dataset.key, titulo: c.dataset.titulo, estado: c.checked ? 'hecha' : 'pendiente'}),
       signal: AbortSignal.timeout(8000)
     });

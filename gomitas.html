@@ -40,7 +40,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 <body>
 <a class="volver" href="fabrica.html">← 🏭 Fábrica La Ronda</a>
 <h1>🍬 Gomitas</h1>
-<div class="sub">Elaboración de gomitas: lotes, sabores y fechas. · Actualizado 02/09/2026 13:33</div>
+<div class="sub">Elaboración de gomitas: lotes, sabores y fechas. · Actualizado 02/09/2026 15:04</div>
 <div id="mi-aviso"></div>
 <div class="card">
   <div class="agregar">
@@ -78,7 +78,16 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 </div>
 <div class="sub" style="margin-top:16px">Generado por Julia 🦞</div>
 <script>
-const API = 'http://127.0.0.1:8082';
+const API_LOCAL = 'http://127.0.0.1:8082';
+const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
+const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
+let API = API_LOCAL;
+(async () => {
+  try {
+    const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)});
+    if (!r.ok) API = API_NUBE;
+  } catch (e) { API = API_NUBE; }
+})();
 const SEC = 'gomitas';
 function aviso(m) { const a = document.getElementById('mi-aviso'); a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
 document.addEventListener('change', async (e) => {
@@ -86,7 +95,7 @@ document.addEventListener('change', async (e) => {
   const c = e.target;
   try {
     const r = await fetch(API + '/api/tarea', {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
+      method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
       body: JSON.stringify({sec: c.dataset.key, titulo: c.dataset.titulo, estado: c.checked ? 'hecha' : 'pendiente'}),
       signal: AbortSignal.timeout(8000)
     });
@@ -99,7 +108,7 @@ document.addEventListener('change', async (e) => {
 async function enviar(url, data) {
   try {
     const r = await fetch(url, {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
+      method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
       body: JSON.stringify(data), signal: AbortSignal.timeout(8000)
     });
     const d = await r.json();
