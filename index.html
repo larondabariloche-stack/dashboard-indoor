@@ -24,6 +24,14 @@ td { padding:4px 6px; border-bottom:1px solid #1f3626; }
 .barra { background:#0a1510; border-radius:8px; height:14px; margin:8px 0; overflow:hidden; }
 .barra > div { background:linear-gradient(90deg,var(--verde),var(--dorado)); height:100%; }
 .alert { background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; padding:10px 14px; border-radius:10px; margin-bottom:16px; font-size:.9rem; }
+.toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+.toolbar select, .toolbar label { background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:8px; padding:6px 10px; font-size:.85rem; }
+.tbody-wrap { max-height:420px; overflow-y:auto; border:1px solid #1f3626; border-radius:8px; }
+.sel-sala { background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:3px 6px; font-size:.8rem; max-width:160px; }
+.btn-mover { background:var(--dorado); color:#0d2d1a; border:none; border-radius:8px; padding:5px 12px; font-weight:700; cursor:pointer; }
+.btn-mover:disabled { opacity:.5; cursor:wait; }
+#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:10px; margin-bottom:12px; }
+#modo-lectura { display:none; background:#2a1a3a; border:1px solid #7a4fa0; color:#d9b6e6; padding:8px 14px; border-radius:10px; margin-bottom:12px; font-size:.85rem; }
 @media (max-width:700px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
@@ -31,15 +39,17 @@ td { padding:4px 6px; border-bottom:1px solid #1f3626; }
 <h1>🌿 Dashboard Indoor — La Ronda</h1>
 <div class="sub">Sede Catamarca 405 · Actualizado 02/09/2026 00:00 · Pase a flora: 18/08/2026</div>
 
-<div class="alert">🌾 <b>Cosecha sala flora 08-09/08 cargada:</b> 1461 g en stock (5 genéticas).</div>
+<div class="alert">🌾 <b>Cosecha sala flora 08-09/08 cargada:</b> 1461 g en stock (6 genéticas).</div>
+<div id="mi-aviso"></div>
+<div id="modo-lectura">⚠️ API local no detectada (puerto 8082) — <b>modo lectura</b>. Para mover plantas, la compu debe tener api_cultivo.py corriendo.</div>
 
 <div class="cards">
-  <div class="card"><div class="n">168</div><div class="l">Plantas registradas</div></div>
-  <div class="card"><div class="n">155</div><div class="l">🌸 Sala Flora</div></div>
-  <div class="card"><div class="n">0</div><div class="l">Sala C Automáticas</div></div>
-  <div class="card"><div class="n">12</div><div class="l">🌾 Cosechadas</div></div>
-  <div class="card"><div class="n">0</div><div class="l">Sala Vege</div></div>
-  <div class="card"><div class="n">1</div><div class="l">Bajas</div></div>
+  <div class="card"><div class="n" id="card-total">168</div><div class="l">Plantas registradas</div></div>
+  <div class="card"><div class="n" id="card-flora">155</div><div class="l">🌸 Sala Flora</div></div>
+  <div class="card"><div class="n" id="card-auto">0</div><div class="l">Sala C Automáticas</div></div>
+  <div class="card"><div class="n" id="card-cosechadas">12</div><div class="l">🌾 Cosechadas</div></div>
+  <div class="card"><div class="n" id="card-vege">0</div><div class="l">Sala Vege</div></div>
+  <div class="card"><div class="n" id="card-baja">1</div><div class="l">Bajas</div></div>
   <div class="card"><div class="n">16</div><div class="l">Día de flora</div></div>
   <div class="card"><div class="n">27%</div><div class="l">Ciclo flora</div></div>
   <div class="card"><div class="n">45</div><div class="l">Días p/ cosecha ~17/10</div></div>
@@ -63,6 +73,125 @@ td { padding:4px 6px; border-bottom:1px solid #1f3626; }
   <table><tr><th>Fecha</th><th>Genética</th><th class="num">Peso secada (g)</th><th class="num">Altas (g)</th><th class="num">Bajas (g)</th><th class="num">Total stock (g)</th><th>Estado</th></tr><tr><td>09/08/2026</td><td>tropicana</td><td class='num'>509</td><td class='num'>-</td><td class='num'>-</td><td class='num'>509</td><td>OK</td></tr><tr><td>09/08/2026</td><td>kings tart</td><td class='num'>174</td><td class='num'>-</td><td class='num'>-</td><td class='num'>174</td><td>OK</td></tr><tr><td>09/08/2026</td><td>sur tangie</td><td class='num'>371</td><td class='num'>-</td><td class='num'>-</td><td class='num'>371</td><td>OK</td></tr><tr><td>09/08/2026</td><td>california orange</td><td class='num'>107</td><td class='num'>-</td><td class='num'>-</td><td class='num'>107</td><td>OK</td></tr><tr><td>09/08/2026</td><td>jacks lemonade</td><td class='num'>156</td><td class='num'>-</td><td class='num'>-</td><td class='num'>156</td><td>OK</td></tr><tr><td>09/08/2026</td><td>auto (Crítica al Auto XXL)</td><td class='num'>144</td><td class='num'>-</td><td class='num'>-</td><td class='num'>144</td><td>OK</td></tr></table>
 </div>
 
-<div class="sub" style="margin-top:16px">Clave de acceso: 2019 · Generado por Julia 🦞 · Planilla: 🌱 Planilla de Cultivo</div>
+<div class="panel" style="margin-top:16px">
+  <h2>🔄 Mover plantas de sala <span style="color:#9aa;font-weight:normal">(<span id="n-filas"></span> — actualiza la planilla automáticamente)</span></h2>
+  <div class="toolbar">
+    <select id="filtro-sala">
+      <option value="">Todas las salas</option>
+      <option value="Sala de Flora">🌸 Sala Flora</option>
+      <option value="Sala Vege Catamarca">🌱 Sala Vege</option>
+      <option value="Sala C - Automáticas">⚡ Sala C Automáticas</option>
+    </select>
+    <label><input type="checkbox" id="filtro-cosechadas"> mostrar cosechadas</label>
+  </div>
+  <div class="tbody-wrap">
+    <table>
+      <tr><th>ID</th><th>Genética</th><th>Sala actual</th><th>Mover a</th><th></th></tr>
+      <tbody id="tabla-mover"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sub" style="margin-top:16px">Clave de acceso: 2019 · Generado por Julia 🦞 · Planilla: 🌱 Planilla de Cultivo · Interactivo vía API local :8082</div>
+<script>
+const API = 'http://127.0.0.1:8082';
+let plantasCache = [];
+
+async function apiOk() {
+  try {
+    const r = await fetch(API + '/api/estado', {signal: AbortSignal.timeout(3000)});
+    return r.ok;
+  } catch (e) { return false; }
+}
+
+async function cargarPlantas() {
+  try {
+    const r = await fetch(API + '/api/plantas', {signal: AbortSignal.timeout(5000)});
+    const d = await r.json();
+    if (d.ok) { plantasCache = d.plantas; renderTabla(); actualizarContadores(); }
+  } catch (e) { /* modo lectura */ }
+}
+
+function renderTabla() {
+  const filtro = document.getElementById('filtro-sala').value;
+  const soloCosechadas = document.getElementById('filtro-cosechadas').checked;
+  const tbody = document.getElementById('tabla-mover');
+  const filas = plantasCache
+    .filter(p => p.fase !== 'Baja')
+    .filter(p => !soloCosechadas ? p.fase !== 'Cosechada' : p.fase === 'Cosechada')
+    .filter(p => !filtro || p.ubicacion === filtro)
+    .map(p => {
+      const sel = `<select class="sel-sala">` +
+        `<option value='Sala de Flora'>Sala de Flora</option><option value='Sala Vege Catamarca'>Sala Vege Catamarca</option><option value='Sala C - Automáticas'>Sala C - Automáticas</option>`.replace('value="' + p.ubicacion + '"', 'value="' + p.ubicacion + '" disabled selected') +
+        `</select>`;
+      return `<tr data-id="${escHtml(p.id)}">
+        <td>${escHtml(p.id)}</td>
+        <td>${escHtml(p.genetica)}</td>
+        <td><span class="ubi">${escHtml(p.ubicacion)}</span></td>
+        <td>${sel}</td>
+        <td><button class="btn-mover" onclick="moverPlanta('${escHtml(p.id)}', this)">Mover ➜</button></td>
+      </tr>`;
+    });
+  tbody.innerHTML = filas.join('') || '<tr><td colspan="5" style="color:#9aa">Sin plantas para esta sala.</td></tr>';
+  document.getElementById('n-filas').textContent = filas.length + ' plantas';
+}
+
+async function moverPlanta(id, btn) {
+  const fila = btn.closest('tr');
+  const sala = fila.querySelector('.sel-sala').value;
+  if (!sala || sala === fila.querySelector('.ubi').textContent) { alert('Elegí una sala distinta a la actual.'); return; }
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    const r = await fetch(API + '/api/mover', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id: id, sala: sala}),
+      signal: AbortSignal.timeout(10000)
+    });
+    const d = await r.json();
+    if (d.ok) {
+      cargarPlantas();
+      mostrarAviso('✅ Planta ' + id + ' movida a ' + sala);
+    } else {
+      alert('Error: ' + (d.error || 'desconocido'));
+      btn.disabled = false; btn.textContent = 'Mover ➜';
+    }
+  } catch (e) {
+    alert('No se pudo conectar a la API local (:8082) — ¿está corriendo api_cultivo.py?');
+    btn.disabled = false; btn.textContent = 'Mover ➜';
+  }
+}
+
+function actualizarContadores() {
+  const ps = plantasCache;
+  const n = x => ps.filter(p => p.fase === x).length;
+  const en = (sub, extra) => ps.filter(p => p.ubicacion.includes(sub) && !extra(p)).length;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('card-total', ps.length);
+  set('card-flora', n('Flora'));
+  set('card-auto', en('Autom', p => p.fase === 'Cosechada'));
+  set('card-cosechadas', n('Cosechada'));
+  set('card-vege', en('Vege', p => ['Flora','Baja','Cosechada'].includes(p.fase)));
+  set('card-baja', n('Baja'));
+}
+
+function mostrarAviso(msg) {
+  const a = document.getElementById('mi-aviso');
+  a.textContent = msg; a.style.display = 'block';
+  setTimeout(() => { a.style.display = 'none'; }, 4000);
+}
+function escHtml(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  const ok = await apiOk();
+  const banner = document.getElementById('modo-lectura');
+  if (!ok) { banner.style.display = 'block'; }
+  cargarPlantas();
+  document.getElementById('filtro-sala').addEventListener('change', renderTabla);
+  document.getElementById('filtro-cosechadas').addEventListener('change', renderTabla);
+});
+</script>
 </body>
 </html>
