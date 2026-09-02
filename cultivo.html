@@ -58,7 +58,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 
 <div class="alert">🌾 <b>Cosecha sala flora 08-09/08 cargada:</b> 1461 g en stock (6 genéticas).</div>
 <div id="mi-aviso"></div>
-<div id="modo-lectura">⚠️ API local no detectada (puerto 8082) — <b>modo lectura</b>. Para mover plantas, la compu debe tener api_cultivo.py corriendo.</div>
+<div id="modo-lectura">⚠️ Sin conexión a la API — ni la local (compu) ni la nube responden. <b>Modo lectura</b>.</div>
 
 <div class="cards">
   <div class="card"><div class="n" id="card-total">168</div><div class="l">Plantas registradas</div></div>
@@ -151,19 +151,23 @@ const API_LOCAL = 'http://127.0.0.1:8082';
 const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
 const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
 let API = API_LOCAL;
-(async () => {
+
+async function resolverAPI() {
+  // local primero, nube como fallback (desde el celu no hay localhost)
   try {
     const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)});
-    if (!r.ok) API = API_NUBE;
-  } catch (e) { API = API_NUBE; }
-})();
+    if (r.ok) { API = API_LOCAL; return true; }
+  } catch (e) {}
+  try {
+    const r = await fetch(API_NUBE + '/api/estado', {signal: AbortSignal.timeout(5000)});
+    if (r.ok) { API = API_NUBE; return true; }
+  } catch (e) {}
+  return false;
+}
 let plantasCache = [];
 
 async function apiOk() {
-  try {
-    const r = await fetch(API + '/api/estado', {signal: AbortSignal.timeout(3000)});
-    return r.ok;
-  } catch (e) { return false; }
+  return resolverAPI();
 }
 
 async function cargarPlantas() {
