@@ -26,14 +26,47 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 .volver { display:inline-block; margin-bottom:14px; color:var(--dorado); text-decoration:none; font-weight:700; }
 .chk-tarea { width:16px; height:16px; accent-color:var(--dorado); cursor:pointer; }
 #mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:10px; margin-bottom:12px; }
+.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:12px; }
+.agregar h3 { color:var(--dorado); font-size:.9rem; margin-bottom:10px; }
+.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33;
+   border-radius:8px; padding:7px 10px; font-size:.85rem; width:100%; }
+.agregar .full { grid-column:1 / -1; }
+.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none;
+   border-radius:8px; padding:8px; font-weight:700; cursor:pointer; font-size:.85rem; }
+.agregar button:hover { opacity:.9; }
 </style>
 </head>
 <body>
 <a class="volver" href="index.html">🏭 ← Volver a Fábrica La Ronda</a>
 <h1>🛠️ Infraestructura</h1>
-<div class="sub">Instalaciones, equipos, arreglos y compras generales. · Actualizado 02/09/2026 12:24</div>
+<div class="sub">Instalaciones, equipos, arreglos y compras generales. · Actualizado 02/09/2026 12:38</div>
 <div id="mi-aviso"></div>
 <div class="card">
+  <div class="agregar">
+    <h3>➕ Agregar tarea</h3>
+    <form id="frm-tarea">
+      <input name="titulo" placeholder="Título de la tarea" required>
+      <select name="categoria">
+        <option value="hacer">✅ hacer</option>
+        <option value="comprar">🛒 comprar</option>
+        <option value="arreglar">🔧 arreglar</option>
+        <option value="otro">• otro</option>
+      </select>
+      <input name="fecha" placeholder="Fecha (opcional) DD/MM/AAAA">
+      <input name="detalle" class="full" placeholder="Detalle (opcional)">
+      <button type="submit">➕ Agregar tarea</button>
+    </form>
+  </div>
+  <div class="agregar">
+    <h3>➕ Agregar fecha clave</h3>
+    <form id="frm-fecha">
+      <input name="titulo" placeholder="Título (ej: Extracción lote 3)" required>
+      <input name="fecha" placeholder="Fecha DD/MM/AAAA" required>
+      <input name="detalle" class="full" placeholder="Detalle (opcional)">
+      <button type="submit">➕ Agregar fecha</button>
+    </form>
+  </div>
   <div class="fechas">
     <h3>📅 Fechas clave</h3>
     <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
@@ -46,6 +79,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 <div class="sub" style="margin-top:16px">Generado por Julia 🦞</div>
 <script>
 const API = 'http://127.0.0.1:8082';
+const SEC = 'infraestructura';
 function aviso(m) { const a = document.getElementById('mi-aviso'); a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
 document.addEventListener('change', async (e) => {
   if (!e.target.classList.contains('chk-tarea')) return;
@@ -60,6 +94,31 @@ document.addEventListener('change', async (e) => {
     if (d.ok) { c.closest('tr').classList.toggle('hecha', c.checked); aviso('✅ Tarea actualizada'); }
     else { c.checked = !c.checked; alert('Error: ' + (d.error || 'desconocido')); }
   } catch (err) { c.checked = !c.checked; alert('API local (:8082) no disponible — no se puede marcar.'); }
+});
+
+async function enviar(url, data) {
+  try {
+    const r = await fetch(url, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data), signal: AbortSignal.timeout(8000)
+    });
+    const d = await r.json();
+    if (d.ok) { aviso('✅ Guardado'); setTimeout(() => location.reload(), 900); return true; }
+    alert('Error: ' + (d.error || 'desconocido'));
+  } catch (err) { alert('API local (:8082) no disponible'); }
+  return false;
+}
+
+document.getElementById('frm-tarea').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const f = e.target;
+  enviar(API + '/api/tarea', {sec: SEC, agregar: true, titulo: f.titulo.value,
+    detalle: f.detalle.value, categoria: f.categoria.value, fecha: f.fecha.value, estado: 'pendiente'});
+});
+document.getElementById('frm-fecha').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const f = e.target;
+  enviar(API + '/api/fecha', {sec: SEC, titulo: f.titulo.value, fecha: f.fecha.value, detalle: f.detalle.value});
 });
 </script>
 </body>
