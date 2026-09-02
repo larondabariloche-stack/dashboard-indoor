@@ -24,6 +24,14 @@ h1 { color:var(--dorado); font-size:1.9rem; }
 .pend.ok { background:#1d3a24; border-color:#3f7a4f; color:#b6e6c3; }
 .fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:12px; }
 .fechas h3 { color:var(--dorado); font-size:.9rem; margin-bottom:8px; }
+/* panel agregar directo */
+.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:14px; }
+.agregar h3 { color:var(--dorado); font-size:.95rem; margin-bottom:10px; }
+.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:8px; padding:7px 10px; font-size:.85rem; width:100%; }
+.agregar .full { grid-column:1 / -1; }
+.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:8px; padding:8px; font-weight:700; cursor:pointer; font-size:.85rem; }
+.agregar button:hover { opacity:.9; }
 .tbody-wrap { max-height:200px; overflow-y:auto; }
 table { width:100%; border-collapse:collapse; font-size:.82rem; }
 th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }
@@ -45,8 +53,70 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
 <body>
 <a class="volver" href="index.html">🏭 ← La Ronda Bariloche</a>
 <h1>🏭 Fábrica La Ronda — Bariloche</h1>
-<div class="sub">Sede Catamarca 405 · Actualizado 02/09/2026 12:53 · Panel interno (clave 2019)</div>
+<div class="sub">Sede Catamarca 405 · Actualizado 02/09/2026 13:07 · Panel interno (clave 2019)</div>
 <div id="mi-aviso"></div>
+
+  <div class="agregar">
+    <h3>➕ Agregar directo (elegí sección)</h3>
+    <form id="frm-agregar">
+      <select id="ag-tipo">
+        <option value="tarea">📋 Tarea</option>
+        <option value="fecha">📅 Fecha clave</option>
+      </select>
+      <select id="ag-sec"><option value='cultivo'>🌿 Cultivo</option><option value='aceites'>💧 Aceites</option><option value='gomitas'>🍬 Gomitas</option><option value='infraestructura'>🛠️ Infraestructura</option></select>
+      <input name="titulo" placeholder="Título" required>
+      <input name="fecha" id="ag-fecha" placeholder="Fecha DD/MM/AAAA">
+      <select name="categoria" id="ag-cat">
+        <option value="hacer">✅ hacer</option>
+        <option value="comprar">🛒 comprar</option>
+        <option value="arreglar">🔧 arreglar</option>
+        <option value="otro">• otro</option>
+      </select>
+      <input name="detalle" class="full" placeholder="Detalle (opcional)">
+      <button type="submit">➕ Agregar</button>
+    </form>
+  </div>
+  <script>
+  (() => {
+    const API = 'http://127.0.0.1:8082';
+    const form = document.getElementById('frm-agregar');
+    if (!form) return;
+    const tipo = document.getElementById('ag-tipo');
+    const fecha = document.getElementById('ag-fecha');
+    const cat = document.getElementById('ag-cat');
+    function toggle() {
+      const esTarea = tipo.value === 'tarea';
+      cat.style.display = esTarea ? '' : 'none';
+      fecha.required = !esTarea;
+      fecha.placeholder = esTarea ? 'Fecha opcional DD/MM/AAAA' : 'Fecha DD/MM/AAAA';
+    }
+    tipo.addEventListener('change', toggle);
+    toggle();
+    let aviso = document.getElementById('mi-aviso');
+    if (!aviso) {
+      aviso = document.createElement('div');
+      aviso.id = 'mi-aviso';
+      form.parentNode.insertBefore(aviso, form);
+    }
+    function msg(m) { aviso.textContent = m; aviso.style.display = 'block'; setTimeout(() => aviso.style.display = 'none', 4000); }
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const sec = document.getElementById('ag-sec').value;
+      const esTarea = tipo.value === 'tarea';
+      const payload = {sec: sec, titulo: form.titulo.value, detalle: form.detalle.value, fecha: form.fecha.value};
+      if (esTarea) { payload.agregar = true; payload.categoria = form.categoria.value; payload.estado = 'pendiente'; }
+      const url = esTarea ? API + '/api/tarea' : API + '/api/fecha';
+      try {
+        const r = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload), signal: AbortSignal.timeout(8000)});
+        const d = await r.json();
+        if (d.ok) { msg('✅ Guardado en ' + sec); setTimeout(() => location.reload(), 900); }
+        else alert('Error: ' + (d.error || 'desconocido'));
+      } catch (err) { alert('API local (:8082) no disponible'); }
+    });
+  })();
+  </script>
+
 <div class="grid">
 
     <div class="seccion" id="sec-cultivo">
