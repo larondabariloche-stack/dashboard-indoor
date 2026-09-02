@@ -3,33 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌿 Dashboard Indoor — La Ronda</title>
+<title>💊 La Ronda Bariloche — Panel</title>
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:20px; }
-h1 { color:var(--dorado); font-size:1.6rem; margin-bottom:4px; }
-.sub { color:#9aa; font-size:.85rem; margin-bottom:20px; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:20px; }
-.card { background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:14px; text-align:center; }
-.card .n { font-size:1.8rem; font-weight:700; color:var(--dorado); }
-.card .l { font-size:.8rem; color:#aab; }
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.panel { background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:16px; }
-.panel h2 { color:var(--dorado); font-size:1.05rem; margin-bottom:10px; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:24px; }
+h1 { color:var(--dorado); font-size:1.9rem; }
+.sub { color:#9aa; font-size:.9rem; margin:4px 0 24px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:20px; }
+.area { background:#16281b; border:1px solid #2a4a33; border-radius:16px; padding:22px;
+         display:flex; flex-direction:column; gap:14px; }
+.head { display:flex; align-items:center; gap:14px; text-decoration:none; color:#e8e8e8; }
+.ico { font-size:2.6rem; }
+.t { font-size:1.5rem; font-weight:700; color:var(--dorado); }
+.flecha { margin-left:auto; color:var(--dorado); font-size:1.5rem; }
+.desc { color:#aab; font-size:.9rem; }
+.pend { align-self:flex-start; background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a;
+         font-size:.8rem; font-weight:700; padding:4px 12px; border-radius:999px; }
+.pend.ok { background:#1d3a24; border-color:#3f7a4f; color:#b6e6c3; }
+.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; }
+.fechas h3 { color:var(--dorado); font-size:.95rem; margin-bottom:8px; }
+/* panel agregar directo */
+.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:14px; }
+.agregar h3 { color:var(--dorado); font-size:.95rem; margin-bottom:10px; }
+.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:8px; padding:7px 10px; font-size:.85rem; width:100%; }
+.agregar .full { grid-column:1 / -1; }
+.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:8px; padding:8px; font-weight:700; cursor:pointer; font-size:.85rem; }
+.agregar button:hover { opacity:.9; }
 table { width:100%; border-collapse:collapse; font-size:.85rem; }
+td { padding:6px 4px; border-bottom:1px solid #1f3626; vertical-align:top; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:12px; }
+.det { color:#778; font-size:.8rem; }
+.entrar { display:inline-block; margin-top:4px; background:var(--dorado); color:#0d2d1a;
+           text-decoration:none; font-weight:700; font-size:.95rem; border-radius:10px;
+           padding:10px 16px; text-align:center; }
+/* estilos para listar tareas en la portada raíz */
 th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }
-td { padding:4px 6px; border-bottom:1px solid #1f3626; }
-.num { text-align:right; font-variant-numeric:tabular-nums; }
-.barra { background:#0a1510; border-radius:8px; height:14px; margin:8px 0; overflow:hidden; }
-.barra > div { background:linear-gradient(90deg,var(--verde),var(--dorado)); height:100%; }
-.alert { background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; padding:10px 14px; border-radius:10px; margin-bottom:16px; font-size:.9rem; }
+.tbody-wrap { max-height:220px; overflow-y:auto; border:1px solid #1f3626; border-radius:8px; }
+.chk-tarea { width:15px; height:15px; accent-color:var(--dorado); cursor:pointer; }
+td.chk { width:24px; }
+td.cat { white-space:nowrap; color:#c8c8c8; font-size:.74rem; text-align:right; }
+.tf { color:#9aa; font-size:.75rem; }
+tr.hecha td { opacity:.45; text-decoration:line-through; }
+.det-sec { color:#9aa; font-size:.74rem; }
 @media (max-width:700px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 <h1>💊🏭 La Ronda Bariloche</h1>
-<div class="sub">Panel central · Actualizado 02/09/2026 15:04 · Clave 2019 · Generado por Julia 🦞</div>
+<div class="sub">Panel central · Actualizado 02/09/2026 15:15 · Clave 2019 · Generado por Julia 🦞</div>
 
   <div class="agregar">
     <h3>➕ Agregar directo (elegí sección)</h3>
@@ -102,14 +125,46 @@ let API = API_LOCAL;
   </script>
 
 <div class="grid">
-  <div class="panel">
-    <h2>🌸 Genéticas en Flora (155 plantas)</h2>
-    <table><tr><th>Genética</th><th class="num">Plantas</th></tr><tr><td>Tropicanna</td><td class='num'>29</td></tr><tr><td>Chizito</td><td class='num'>11</td></tr><tr><td>Sur Tangie</td><td class='num'>9</td></tr><tr><td>Kinks Tart</td><td class='num'>9</td></tr><tr><td>Jack's Lemonade</td><td class='num'>8</td></tr><tr><td>Kings Tart</td><td class='num'>8</td></tr><tr><td>Fog3</td><td class='num'>8</td></tr><tr><td>Mountain Cake</td><td class='num'>7</td></tr><tr><td>Apple Cookies</td><td class='num'>5</td></tr><tr><td>Zberry</td><td class='num'>4</td></tr><tr><td>Mimosa Kush</td><td class='num'>4</td></tr><tr><td>Cali Orange</td><td class='num'>4</td></tr><tr><td>Florida 05</td><td class='num'>4</td></tr><tr><td>Sur tangie</td><td class='num'>4</td></tr><tr><td>Sin genética</td><td class='num'>4</td></tr><tr><td>After Eight</td><td class='num'>3</td></tr><tr><td>Family 01</td><td class='num'>3</td></tr><tr><td>Champ 03</td><td class='num'>3</td></tr><tr><td>Jelousy 02</td><td class='num'>3</td></tr><tr><td>Sweet Cherry Kush</td><td class='num'>3</td></tr><tr><td>Champ 06</td><td class='num'>2</td></tr><tr><td>Z berry 25</td><td class='num'>2</td></tr><tr><td>Apple 26</td><td class='num'>2</td></tr><tr><td>Kings tart 87</td><td class='num'>2</td></tr><tr><td>Jealousy</td><td class='num'>2</td></tr><tr><td>Mochi Pop 1</td><td class='num'>2</td></tr><tr><td>Tropicanna (15L)</td><td class='num'>1</td></tr><tr><td>Champ 01</td><td class='num'>1</td></tr><tr><td>Champ 02</td><td class='num'>1</td></tr><tr><td>Champ 04</td><td class='num'>1</td></tr><tr><td>Tropicana</td><td class='num'>1</td></tr><tr><td>Jelousy 03</td><td class='num'>1</td></tr><tr><td>SM</td><td class='num'>1</td></tr><tr><td>No identificada</td><td class='num'>1</td></tr><tr><td>Mochi Pop 4</td><td class='num'>1</td></tr><tr><td>Northern Light</td><td class='num'>1</td></tr></table>
-  </div>
-  <div class="panel">
-    <h2>💧 Últimos riegos / registros</h2>
-    <table><tr><th>Fecha</th><th>ID</th><th>Fase</th><th class="num">pH</th><th class="num">EC</th><th>Notas</th></tr><tr><td>13/08/2026</td><td>Sala Vege Catamarca</td><td>Vegetativo</td><td class='num'>5.9</td><td class='num'>1.9</td><td></td></tr><tr><td>05/08/2026</td><td>Sala de Flora</td><td>Flora</td><td class='num'>5.8</td><td class='num'></td><td>Solo agua sin sales</td></tr><tr><td>09/07/2026</td><td>4</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>18</td><td></td><td class='num'></td><td class='num'></td><td>2 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>3</td><td></td><td class='num'></td><td class='num'></td><td>2 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>7</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>25</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>12</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr></table>
-  </div>
+
+    <div class="area" id="area-dispensa">
+      <a class="head" href="dispensa.html">
+        <span class="ico">💊</span>
+        <span class="t">Dispensa</span>
+        <span class="flecha">➜</span>
+      </a>
+      <p class="desc">Área de dispensa de La Ronda Bariloche.</p>
+      <span class='pend'>2 pendientes</span>
+      <div class="fechas">
+        <h3>📅 Próximas fechas</h3>
+        <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
+      </div>
+      
+      <div class="fechas">
+        <h3>📋 Tareas</h3>
+        <div class="tbody-wrap"><table><tr><th></th><th>Tarea</th><th></th></tr><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='dispensa' data-titulo='pedir filtros' ></td><td><b>pedir filtros</b><div class='det'></div><div class='det-sec'>→ dispensa</div></td><td class='cat'>✅ hacer<br><span class='tf'></span></td></tr><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='dispensa' data-titulo='ver papeles tomas para envio de producto' ></td><td><b>ver papeles tomas para envio de producto</b><div class='det'></div><div class='det-sec'>→ dispensa</div></td><td class='cat'>✅ hacer<br><span class='tf'></span></td></tr></table></div>
+      </div>
+      <a class="entrar" href="dispensa.html">Entrar a Dispensa ➜</a>
+    </div>
+
+    <div class="area" id="area-fabrica">
+      <a class="head" href="fabrica.html">
+        <span class="ico">🏭</span>
+        <span class="t">Fábrica</span>
+        <span class="flecha">➜</span>
+      </a>
+      <p class="desc">Fábrica La Ronda: cultivo, aceites, gomitas e infraestructura.</p>
+      <span class='pend'>2 pendientes</span>
+      <div class="fechas">
+        <h3>📅 Próximas fechas</h3>
+        <table><tr><td class='f'>17/10/2026</td><td><b>Cosecha estimada flora</b><div class='det'>Ciclo de 60 días desde 18/08</div></td></tr><tr><td class='f'>02/09/2026</td><td><b>Sustrato inerte</b><div class='det'>Planificado para hoy</div></td></tr><tr><td class='f'>18/08/2026</td><td><b>Pase masivo a flora</b><div class='det'>96 plantas vege → flora</div></td></tr><tr><td class='f'>09/08/2026</td><td><b>Cosecha 1 sala flora</b><div class='det'>1.461 g en stock (6 genéticas)</div></td></tr></table>
+      </div>
+      
+      <div class="fechas">
+        <h3>📋 Tareas</h3>
+        <div class="tbody-wrap"><table><tr><th></th><th>Tarea</th><th></th></tr><tr class='hecha'><td class='chk'><input type='checkbox' class='chk-tarea' data-key='cultivo' data-titulo='Cargar sustrato inerte' checked ></td><td><b>Cargar sustrato inerte</b><div class='det'>Comprar y reponer en sala</div><div class='det-sec'>→ cultivo</div></td><td class='cat'>🛒 comprar<br><span class='tf'>02/09/2026</span></td></tr><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='aceites' data-titulo='comprar aceite de oliva' ></td><td><b>comprar aceite de oliva</b><div class='det'></div><div class='det-sec'>→ aceites</div></td><td class='cat'>🛒 comprar<br><span class='tf'></span></td></tr><tr class=''><td class='chk'><input type='checkbox' class='chk-tarea' data-key='aceites' data-titulo='alchol 96' ></td><td><b>alchol 96</b><div class='det'></div><div class='det-sec'>→ aceites</div></td><td class='cat'>✅ hacer<br><span class='tf'></span></td></tr></table></div>
+      </div>
+      <a class="entrar" href="fabrica.html">Entrar a Fábrica ➜</a>
+    </div>
 </div>
 <div class="sub" style="margin-top:20px">Datos editables en fabrica.json · Interactivo vía API local :8082</div>
 <script>
