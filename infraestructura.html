@@ -7,89 +7,107 @@
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:36px; }
-h1 { color:var(--dorado); font-size:2.4rem; }
-.sub { color:#9aa; font-size:1.35rem; margin:6px 0 30px; }
-.card { background:#16281b; border:1.5px solid #2a4a33; border-radius:21px; padding:27px; max-width:1080px; margin-bottom:24px; }
-.desc { color:#aab; font-size:1.35rem; margin-bottom:21px; }
-.fechas { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:18px; margin-bottom:18px; }
-.fechas h3 { color:var(--dorado); font-size:1.42rem; margin-bottom:12px; }
-.tbody-wrap { overflow-y:auto; }
-table { width:100%; border-collapse:collapse; font-size:1.27rem; }
-td { padding:9px 6px; border-bottom:1.5px solid #1f3626; vertical-align:top; }
-td.f { white-space:nowrap; color:#c8c8c8; padding-right:18px; }
-td.chk { width:42px; }
-td.cat { white-space:nowrap; color:#c8c8c8; font-size:1.17rem; text-align:right; }
-.tf { color:#9aa; font-size:1.17rem; }
-.det { color:#778; font-size:1.2rem; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0a120d; color:#e8e8e8; padding:18px; }
+h1 { color:var(--dorado); font-size:2.2rem; margin-bottom:4px; }
+.sub { color:#9aa; font-size:1.1rem; margin-bottom:18px; }
+.volver { display:inline-block; margin-bottom:12px; color:var(--dorado); text-decoration:none; font-weight:700; font-size:1.1rem; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.columna { background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:10px; min-width:0; }
+.head { display:flex; align-items:center; gap:10px; text-decoration:none; color:#e8e8e8; }
+.ico { font-size:2.2rem; }
+.t { font-size:1.7rem; font-weight:700; color:var(--dorado); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.flecha { margin-left:auto; color:var(--dorado); font-size:1.5rem; }
+.badge { align-self:flex-start; background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; font-size:1rem; font-weight:700; padding:3px 10px; border-radius:999px; }
+.badge.ok { background:#1d3a24; border-color:#3f7a4f; color:#b6e6c3; }
+.bloque { background:#0f1a12; border:1px solid #1f3626; border-radius:8px; padding:10px; }
+.bloque h3 { color:var(--dorado); font-size:1.15rem; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+table { width:100%; border-collapse:collapse; font-size:1.15rem; }
+th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 5px; }
+td { padding:5px; border-bottom:1px solid #1f3626; vertical-align:top; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:10px; font-size:1.05rem; }
+td.chk { width:32px; }
+td.cat { white-space:nowrap; color:#c8c8e8; font-size:0.95rem; text-align:right; }
+.tf { color:#9aa; font-size:0.95rem; }
+.det { color:#778; font-size:0.95rem; }
 tr.hecha td { opacity:.45; text-decoration:line-through; }
-.volver { display:inline-block; margin-bottom:21px; color:var(--dorado); text-decoration:none; font-weight:700; }
-.chk-tarea { width:24px; height:24px; accent-color:var(--dorado); cursor:pointer; }
-#mi-aviso { display:none; background:#1d3a24; border:1.5px solid #3f7a4f; color:#b6e6c3; padding:12px 21px; border-radius:15px; margin-bottom:18px; }
-.agregar { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:21px; margin-bottom:18px; }
-.agregar h3 { color:var(--dorado); font-size:1.35rem; margin-bottom:15px; }
-.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1.5px solid #2a4a33;
-   border-radius:12px; padding:10.5px 15px; font-size:1.27rem; width:100%; }
-.agregar .full { grid-column:1 / -1; }
-.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none;
-   border-radius:12px; padding:12px; font-weight:700; cursor:pointer; font-size:1.27rem; }
+tr.vencida td.f { color:#ff6b6b; font-weight:700; }
+tr.proxima td.f { color:#ffd97a; font-weight:700; }
+.empty { color:#667; font-style:italic; }
+.entrar { display:block; margin-top:auto; background:var(--dorado); color:#0d2d1a; text-decoration:none; font-weight:700; font-size:1.2rem; border-radius:8px; padding:10px; text-align:center; }
+.entrar:hover { opacity:.9; }
+/* agregar */
+.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-top:14px; }
+.agregar h3 { color:var(--dorado); font-size:1.25rem; margin-bottom:10px; }
+.agregar form { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:8px 10px; font-size:1.05rem; width:100%; }
+.agregar .full { grid-column:span 2; }
+.agregar button { grid-column:span 4; background:var(--dorado); color:#0d2d1a; border:none; border-radius:6px; padding:10px; font-weight:700; cursor:pointer; font-size:1.1rem; }
 .agregar button:hover { opacity:.9; }
+.chk-tarea { width:20px; height:20px; accent-color:var(--dorado); cursor:pointer; }
+#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:8px; margin-bottom:12px; font-size:1.05rem; }
+.footer { margin-top:14px; color:#9aa; font-size:0.95rem; }
+@media (max-width:1100px) { .grid4 { grid-template-columns:1fr 1fr; } .agregar form { grid-template-columns:1fr 1fr; } .agregar .full { grid-column:span 2; } .agregar button { grid-column:span 2; } }
+@media (max-width:760px) { .grid2, .grid4 { grid-template-columns:1fr; } .agregar form { grid-template-columns:1fr; } .agregar .full { grid-column:1 / -1; } .agregar button { grid-column:1 / -1; } }
+
+.pagina { max-width:none; }
 </style>
 </head>
 <body>
 <a class="volver" href="fabrica.html">← 🏭 Fábrica La Ronda</a>
 <h1>🛠️ Infraestructura</h1>
-<div class="sub">Instalaciones, equipos, arreglos y compras generales. · Actualizado 04/09/2026 13:14</div>
+<div class="sub"> · Actualizado 04/09/2026 13:28</div>
 <div id="mi-aviso"></div>
-<div class="card">
-  <div class="agregar">
-    <h3>➕ Agregar tarea</h3>
-    <form id="frm-tarea">
-      <input name="titulo" placeholder="Título de la tarea" required>
-      <select name="categoria">
-        <option value="hacer">✅ hacer</option>
-        <option value="comprar">🛒 comprar</option>
-        <option value="arreglar">🔧 arreglar</option>
-        <option value="otro">• otro</option>
-      </select>
-      <input name="fecha" placeholder="Fecha (opcional) DD/MM/AAAA">
-      <input name="detalle" class="full" placeholder="Detalle (opcional)">
-      <button type="submit">➕ Agregar tarea</button>
-    </form>
+<div class="agregar">
+  <h3>➕ Agregar tarea</h3>
+  <form id="frm-tarea">
+    <input name="titulo" placeholder="Título de la tarea" required>
+    <select name="categoria">
+      <option value="hacer">✅ hacer</option>
+      <option value="comprar">🛒 comprar</option>
+      <option value="arreglar">🔧 arreglar</option>
+      <option value="otro">• otro</option>
+    </select>
+    <input name="fecha" placeholder="Fecha (opcional) DD/MM/AAAA">
+    <input name="detalle" class="full" placeholder="Detalle (opcional)">
+    <button type="submit">➕ Agregar tarea</button>
+  </form>
+</div>
+<div class="agregar">
+  <h3>➕ Agregar fecha clave</h3>
+  <form id="frm-fecha">
+    <input name="titulo" placeholder="Título" required>
+    <input name="fecha" placeholder="Fecha DD/MM/AAAA" required>
+    <input name="detalle" class="full" placeholder="Detalle (opcional)">
+    <button type="submit">➕ Agregar fecha</button>
+  </form>
+</div>
+<div class="grid2">
+  <div class="columna">
+    <div class="bloque">
+      <h3>📅 Fechas clave</h3>
+      <table><tr><td colspan='2' class='empty'>Sin fechas</td></tr></table>
+    </div>
   </div>
-  <div class="agregar">
-    <h3>➕ Agregar fecha clave</h3>
-    <form id="frm-fecha">
-      <input name="titulo" placeholder="Título (ej: Extracción lote 3)" required>
-      <input name="fecha" placeholder="Fecha DD/MM/AAAA" required>
-      <input name="detalle" class="full" placeholder="Detalle (opcional)">
-      <button type="submit">➕ Agregar fecha</button>
-    </form>
-  </div>
-  <div class="fechas">
-    <h3>📅 Fechas clave</h3>
-    <table><tr><td colspan='2' style='color:#778'>Sin fechas cargadas todavía.</td></tr></table>
-  </div>
-  <div class="fechas">
-    <h3>📋 Tareas</h3>
-    <div class="tbody-wrap"><table><tr><th></th><th>Tarea</th><th></th></tr><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
+  <div class="columna">
+    <div class="bloque">
+      <h3>📋 Tareas</h3>
+      <table><tr><td colspan='2' class='empty'>Sin tareas pendientes</td></tr></table>
+    </div>
   </div>
 </div>
-<div class="sub" style="margin-top:24px">Generado por Julia 🦞</div>
+<div class="footer">Generado por Julia 🦞</div>
 <script>
+
 const API_LOCAL = 'http://127.0.0.1:8082';
 const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
 const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
 let API = API_LOCAL;
 (async () => {
-  try {
-    const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)});
-    if (!r.ok) API = API_NUBE;
-  } catch (e) { API = API_NUBE; }
+  try { const r = await fetch(API_LOCAL + '/api/estado', {signal: AbortSignal.timeout(1500)}); if (!r.ok) API = API_NUBE; }
+  catch (e) { API = API_NUBE; }
 })();
-const SEC = 'infraestructura';
-function aviso(m) { const a = document.getElementById('mi-aviso'); a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
+function aviso(m) { const a = document.getElementById('mi-aviso'); if(!a) return; a.textContent = m; a.style.display = 'block'; setTimeout(() => a.style.display = 'none', 4000); }
 document.addEventListener('change', async (e) => {
   if (!e.target.classList.contains('chk-tarea')) return;
   const c = e.target;
@@ -100,35 +118,23 @@ document.addEventListener('change', async (e) => {
       signal: AbortSignal.timeout(8000)
     });
     const d = await r.json();
-    if (d.ok) { c.closest('tr').classList.toggle('hecha', c.checked); aviso('✅ Tarea actualizada'); }
+    if (d.ok) { c.closest('tr').classList.toggle('hecha', c.checked); aviso('✅ Actualizado'); }
     else { c.checked = !c.checked; alert('Error: ' + (d.error || 'desconocido')); }
-  } catch (err) { c.checked = !c.checked; alert('API local (:8082) no disponible — no se puede marcar.'); }
+  } catch (err) { c.checked = !c.checked; alert('API local (:8082) no disponible'); }
 });
 
+const SEC = 'infraestructura';
 async function enviar(url, data) {
   try {
-    const r = await fetch(url, {
-      method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY},
-      body: JSON.stringify(data), signal: AbortSignal.timeout(8000)
-    });
+    const r = await fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json', 'X-API-Key': API_KEY}, body: JSON.stringify(data), signal: AbortSignal.timeout(8000) });
     const d = await r.json();
-    if (d.ok) { aviso('✅ Guardado'); setTimeout(() => location.reload(), 900); return true; }
+    if (d.ok) { aviso('✅ Guardado'); setTimeout(() => location.reload(), 700); return true; }
     alert('Error: ' + (d.error || 'desconocido'));
   } catch (err) { alert('API local (:8082) no disponible'); }
   return false;
 }
-
-document.getElementById('frm-tarea').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const f = e.target;
-  enviar(API + '/api/tarea', {sec: SEC, agregar: true, titulo: f.titulo.value,
-    detalle: f.detalle.value, categoria: f.categoria.value, fecha: f.fecha.value, estado: 'pendiente'});
-});
-document.getElementById('frm-fecha').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const f = e.target;
-  enviar(API + '/api/fecha', {sec: SEC, titulo: f.titulo.value, fecha: f.fecha.value, detalle: f.detalle.value});
-});
+document.getElementById('frm-tarea').addEventListener('submit', (e) => { e.preventDefault(); const f = e.target; enviar(API + '/api/tarea', {sec: SEC, agregar: true, titulo: f.titulo.value, detalle: f.detalle.value, categoria: f.categoria.value, fecha: f.fecha.value, estado: 'pendiente'}); });
+document.getElementById('frm-fecha').addEventListener('submit', (e) => { e.preventDefault(); const f = e.target; enviar(API + '/api/fecha', {sec: SEC, titulo: f.titulo.value, fecha: f.fecha.value, detalle: f.detalle.value}); });
 </script>
 </body>
 </html>

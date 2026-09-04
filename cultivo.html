@@ -7,76 +7,81 @@
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:30px; }
-h1 { color:var(--dorado); font-size:2.4rem; margin-bottom:6px; }
-.sub { color:#9aa; font-size:1.27rem; margin-bottom:30px; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-bottom:30px; }
-.card { background:#16281b; border:1.5px solid #2a4a33; border-radius:18px; padding:21px; text-align:center; }
-.card .n { font-size:2.7rem; font-weight:700; color:var(--dorado); }
-.card .l { font-size:1.2rem; color:#aab; }
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-.panel { background:#16281b; border:1.5px solid #2a4a33; border-radius:18px; padding:24px; }
-.panel h2 { color:var(--dorado); font-size:1.58rem; margin-bottom:15px; }
-table { width:100%; border-collapse:collapse; font-size:1.27rem; }
-th { text-align:left; color:#c8c8c8; border-bottom:1.5px solid #2a4a33; padding:6px 9px; }
-td { padding:6px 9px; border-bottom:1.5px solid #1f3626; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0a120d; color:#e8e8e8; padding:18px; }
+h1 { color:var(--dorado); font-size:2.2rem; margin-bottom:4px; }
+.sub { color:#9aa; font-size:1.1rem; margin-bottom:14px; }
+.volver { display:inline-block; margin-bottom:12px; color:var(--dorado); text-decoration:none; font-weight:700; font-size:1.1rem; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin-bottom:14px; }
+.card { background:#16281b; border:1px solid #2a4a33; border-radius:10px; padding:12px 8px; text-align:center; }
+.card .n { font-size:2.2rem; font-weight:700; color:var(--dorado); line-height:1; }
+.card .l { font-size:1rem; color:#aab; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.panel { background:#16281b; border:1px solid #2a4a33; border-radius:10px; padding:12px; }
+.panel h2 { color:var(--dorado); font-size:1.35rem; margin-bottom:8px; }
+table { width:100%; border-collapse:collapse; font-size:1.1rem; }
+th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 5px; }
+td { padding:4px 5px; border-bottom:1px solid #1f3626; }
 .num { text-align:right; font-variant-numeric:tabular-nums; }
-.barra { background:#0a1510; border-radius:12px; height:21px; margin:12px 0; overflow:hidden; }
+.barra { background:#0a1510; border-radius:8px; height:16px; margin:10px 0; overflow:hidden; }
 .barra > div { background:linear-gradient(90deg,var(--verde),var(--dorado)); height:100%; }
-.alert { background:#3a2a10; border:1.5px solid var(--dorado); color:#ffd97a; padding:15px 21px; border-radius:15px; margin-bottom:24px; font-size:1.35rem; }
-.toolbar { display:flex; gap:15px; align-items:center; flex-wrap:wrap; margin-bottom:15px; }
-.toolbar select, .toolbar label { background:#0f1a12; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:12px; padding:9px 15px; font-size:1.27rem; }
-.tbody-wrap { max-height:630px; overflow-y:auto; border:1.5px solid #1f3626; border-radius:12px; }
-.sel-sala { background:#0f1a12; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:9px; padding:4.5px 9px; font-size:1.2rem; max-width:240px; }
-.btn-mover { background:var(--dorado); color:#0d2d1a; border:none; border-radius:12px; padding:7.5px 18px; font-weight:700; cursor:pointer; }
+.alert { background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; padding:10px 14px; border-radius:8px; margin-bottom:12px; font-size:1.15rem; }
+.toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+.toolbar select, .toolbar label { background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:6px 10px; font-size:1.05rem; }
+.tbody-wrap { max-height:420px; overflow-y:auto; border:1px solid #1f3626; border-radius:8px; }
+.sel-sala { background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:4px 6px; font-size:1rem; max-width:180px; }
+.btn-mover { background:var(--dorado); color:#0d2d1a; border:none; border-radius:6px; padding:6px 12px; font-weight:700; cursor:pointer; font-size:1rem; }
 .btn-mover:disabled { opacity:.5; cursor:wait; }
-#mi-aviso { display:none; background:#1d3a24; border:1.5px solid #3f7a4f; color:#b6e6c3; padding:12px 21px; border-radius:15px; margin-bottom:18px; }
-#modo-lectura { display:none; background:#2a1a3a; border:1.5px solid #7a4fa0; color:#d9b6e6; padding:12px 21px; border-radius:15px; margin-bottom:18px; font-size:1.27rem; }
-/* panel tareas/fechas */
-.fechas { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:18px; margin-bottom:18px; }
-.fechas h3 { color:var(--dorado); font-size:1.42rem; margin-bottom:12px; }
-.agregar { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:21px; margin-bottom:18px; }
-.agregar h3 { color:var(--dorado); font-size:1.35rem; margin-bottom:15px; }
-.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:12px; padding:10.5px 15px; font-size:1.27rem; width:100%; }
-.agregar .full { grid-column:1 / -1; }
-.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:12px; padding:12px; font-weight:700; cursor:pointer; font-size:1.27rem; }
+#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:8px; margin-bottom:10px; font-size:1.05rem; }
+#modo-lectura { display:none; background:#2a1a3a; border:1px solid #7a4fa0; color:#d9b6e6; padding:8px 14px; border-radius:8px; margin-bottom:10px; font-size:1.05rem; }
+.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:8px; padding:10px; margin-bottom:10px; }
+.fechas h3 { color:var(--dorado); font-size:1.15rem; margin-bottom:6px; }
+.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:12px; }
+.agregar h3 { color:var(--dorado); font-size:1.2rem; margin-bottom:10px; }
+.agregar form { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:8px 10px; font-size:1.05rem; width:100%; }
+.agregar .full { grid-column:span 2; }
+.agregar button { grid-column:span 4; background:var(--dorado); color:#0d2d1a; border:none; border-radius:6px; padding:10px; font-weight:700; cursor:pointer; font-size:1.1rem; }
 .agregar button:hover { opacity:.9; }
-.chk-tarea { width:22.5px; height:22.5px; accent-color:var(--dorado); cursor:pointer; }
-.td-chk { width:36px; }
-dd.det { color:#778; font-size:1.17rem; }
-td.f { white-space:nowrap; color:#c8c8c8; padding-right:15px; }
-td.cat { white-space:nowrap; color:#c8c8c8; font-size:1.11rem; text-align:right; }
-.tf { color:#9aa; font-size:1.12rem; }
+.chk-tarea { width:20px; height:20px; accent-color:var(--dorado); cursor:pointer; }
+td.chk { width:32px; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:10px; font-size:1rem; }
+.tf { color:#9aa; font-size:0.95rem; }
+.det { color:#778; font-size:0.95rem; }
 tr.hecha td { opacity:.45; text-decoration:line-through; }
-@media (max-width:1050px) { .grid { grid-template-columns:1fr; } }
+tr.vencida td.f { color:#ff6b6b; font-weight:700; }
+tr.proxima td.f { color:#ffd97a; font-weight:700; }
+.empty { color:#667; font-style:italic; }
+.footer { margin-top:12px; color:#9aa; font-size:0.95rem; }
+@media (max-width:1100px) { .agregar form { grid-template-columns:1fr 1fr; } .agregar .full { grid-column:span 2; } .agregar button { grid-column:span 2; } }
+@media (max-width:760px) { .grid { grid-template-columns:1fr; } .cards { grid-template-columns:repeat(3,1fr); } .agregar form { grid-template-columns:1fr; } .agregar .full { grid-column:1 / -1; } .agregar button { grid-column:1 / -1; } }
 </style>
 </head>
 <body>
+<a class="volver" href="fabrica.html">← 🏭 Fábrica La Ronda</a>
 <h1>🌿 Dashboard Indoor — La Ronda</h1>
-<div class="sub"><a href="fabrica.html" style="color:var(--dorado)">🏭 Volver a Fábrica La Ronda</a> · Sede Catamarca 405 · Actualizado 04/09/2026 00:00 · Pase a flora: 18/08/2026</div>
+<div class="sub">Sede Catamarca 405 · Actualizado 04/09/2026 00:00 · Pase a flora: 18/08/2026</div>
 
 <div class="alert">🌾 <b>Cosecha sala flora 08-09/08 cargada:</b> 1461 g en stock (6 genéticas).</div>
 <div id="mi-aviso"></div>
-<div id="modo-lectura">⚠️ Sin conexión a la API — ni la local (compu) ni la nube responden. <b>Modo lectura</b>.</div>
+<div id="modo-lectura">⚠️ Sin conexión a la API — modo lectura.</div>
 
 <div class="cards">
-  <div class="card"><div class="n" id="card-total">168</div><div class="l">Plantas registradas</div></div>
-  <div class="card"><div class="n" id="card-flora">155</div><div class="l">🌸 Sala Flora</div></div>
-  <div class="card"><div class="n" id="card-auto">0</div><div class="l">Sala C Automáticas</div></div>
-  <div class="card"><div class="n" id="card-cosechadas">12</div><div class="l">🌾 Cosechadas</div></div>
-  <div class="card"><div class="n" id="card-vege">0</div><div class="l">Sala Vege</div></div>
+  <div class="card"><div class="n" id="card-total">168</div><div class="l">Plantas</div></div>
+  <div class="card"><div class="n" id="card-flora">155</div><div class="l">🌸 Flora</div></div>
+  <div class="card"><div class="n" id="card-auto">0</div><div class="l">⚡ Auto</div></div>
+  <div class="card"><div class="n" id="card-cosechadas">12</div><div class="l">🌾 Cosecha</div></div>
+  <div class="card"><div class="n" id="card-vege">0</div><div class="l">🌱 Vege</div></div>
   <div class="card"><div class="n" id="card-baja">1</div><div class="l">Bajas</div></div>
-  <div class="card"><div class="n">18</div><div class="l">Día de flora</div></div>
-  <div class="card"><div class="n">30%</div><div class="l">Ciclo flora</div></div>
-  <div class="card"><div class="n">43</div><div class="l">Días p/ cosecha ~17/10</div></div>
+  <div class="card"><div class="n">18</div><div class="l">Día flora</div></div>
+  <div class="card"><div class="n">30%</div><div class="l">Ciclo</div></div>
+  <div class="card"><div class="n">43</div><div class="l">Días p/ cosecha</div></div>
 </div>
 
 <div class="barra"><div style="width:30%"></div></div>
 
 <div class="grid">
   <div class="panel">
-    <h2>🌸 Genéticas en Flora (155 plantas)</h2>
+    <h2>🌸 Genéticas en Flora (155)</h2>
     <table><tr><th>Genética</th><th class="num">Plantas</th></tr><tr><td>Tropicanna</td><td class='num'>29</td></tr><tr><td>Chizito</td><td class='num'>11</td></tr><tr><td>Sur Tangie</td><td class='num'>9</td></tr><tr><td>Kinks Tart</td><td class='num'>9</td></tr><tr><td>Jack's Lemonade</td><td class='num'>8</td></tr><tr><td>Kings Tart</td><td class='num'>8</td></tr><tr><td>Fog3</td><td class='num'>8</td></tr><tr><td>Mountain Cake</td><td class='num'>7</td></tr><tr><td>Apple Cookies</td><td class='num'>5</td></tr><tr><td>Zberry</td><td class='num'>4</td></tr><tr><td>Mimosa Kush</td><td class='num'>4</td></tr><tr><td>Cali Orange</td><td class='num'>4</td></tr><tr><td>Florida 05</td><td class='num'>4</td></tr><tr><td>Sur tangie</td><td class='num'>4</td></tr><tr><td>Sin genética</td><td class='num'>4</td></tr><tr><td>After Eight</td><td class='num'>3</td></tr><tr><td>Family 01</td><td class='num'>3</td></tr><tr><td>Champ 03</td><td class='num'>3</td></tr><tr><td>Jelousy 02</td><td class='num'>3</td></tr><tr><td>Sweet Cherry Kush</td><td class='num'>3</td></tr><tr><td>Champ 06</td><td class='num'>2</td></tr><tr><td>Z berry 25</td><td class='num'>2</td></tr><tr><td>Apple 26</td><td class='num'>2</td></tr><tr><td>Kings tart 87</td><td class='num'>2</td></tr><tr><td>Jealousy</td><td class='num'>2</td></tr><tr><td>Mochi Pop 1</td><td class='num'>2</td></tr><tr><td>Tropicanna (15L)</td><td class='num'>1</td></tr><tr><td>Champ 01</td><td class='num'>1</td></tr><tr><td>Champ 02</td><td class='num'>1</td></tr><tr><td>Champ 04</td><td class='num'>1</td></tr><tr><td>Tropicana</td><td class='num'>1</td></tr><tr><td>Jelousy 03</td><td class='num'>1</td></tr><tr><td>SM</td><td class='num'>1</td></tr><tr><td>No identificada</td><td class='num'>1</td></tr><tr><td>Mochi Pop 4</td><td class='num'>1</td></tr><tr><td>Northern Light</td><td class='num'>1</td></tr></table>
   </div>
   <div class="panel">
@@ -85,43 +90,43 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
   </div>
 </div>
 
-<div class="panel" style="margin-top:24px">
+<div class="panel" style="margin-top:12px">
   <h2>🌾 Registro de cosechas</h2>
-  <table><tr><th>Fecha</th><th>Genética</th><th class="num">Peso secada (g)</th><th class="num">Altas (g)</th><th class="num">Bajas (g)</th><th class="num">Total stock (g)</th><th>Estado</th></tr><tr><td>09/08/2026</td><td>tropicana</td><td class='num'>509</td><td class='num'>-</td><td class='num'>-</td><td class='num'>509</td><td>OK</td></tr><tr><td>09/08/2026</td><td>kings tart</td><td class='num'>174</td><td class='num'>-</td><td class='num'>-</td><td class='num'>174</td><td>OK</td></tr><tr><td>09/08/2026</td><td>sur tangie</td><td class='num'>371</td><td class='num'>-</td><td class='num'>-</td><td class='num'>371</td><td>OK</td></tr><tr><td>09/08/2026</td><td>california orange</td><td class='num'>107</td><td class='num'>-</td><td class='num'>-</td><td class='num'>107</td><td>OK</td></tr><tr><td>09/08/2026</td><td>jacks lemonade</td><td class='num'>156</td><td class='num'>-</td><td class='num'>-</td><td class='num'>156</td><td>OK</td></tr><tr><td>09/08/2026</td><td>auto (Crítica al Auto XXL)</td><td class='num'>144</td><td class='num'>-</td><td class='num'>-</td><td class='num'>144</td><td>OK</td></tr></table>
+  <table><tr><th>Fecha</th><th>Genética</th><th class="num">Peso (g)</th><th class="num">Altas</th><th class="num">Bajas</th><th class="num">Total</th><th>Estado</th></tr><tr><td>09/08/2026</td><td>tropicana</td><td class='num'>509</td><td class='num'>-</td><td class='num'>-</td><td class='num'>509</td><td>OK</td></tr><tr><td>09/08/2026</td><td>kings tart</td><td class='num'>174</td><td class='num'>-</td><td class='num'>-</td><td class='num'>174</td><td>OK</td></tr><tr><td>09/08/2026</td><td>sur tangie</td><td class='num'>371</td><td class='num'>-</td><td class='num'>-</td><td class='num'>371</td><td>OK</td></tr><tr><td>09/08/2026</td><td>california orange</td><td class='num'>107</td><td class='num'>-</td><td class='num'>-</td><td class='num'>107</td><td>OK</td></tr><tr><td>09/08/2026</td><td>jacks lemonade</td><td class='num'>156</td><td class='num'>-</td><td class='num'>-</td><td class='num'>156</td><td>OK</td></tr><tr><td>09/08/2026</td><td>auto (Crítica al Auto XXL)</td><td class='num'>144</td><td class='num'>-</td><td class='num'>-</td><td class='num'>144</td><td>OK</td></tr></table>
 </div>
 
-<div class="panel" style="margin-top:24px">
-  <h2>🔄 Mover plantas de sala <span style="color:#9aa;font-weight:normal">(<span id="n-filas"></span> — actualiza la planilla automáticamente)</span></h2>
+<div class="panel" style="margin-top:12px">
+  <h2>🔄 Mover plantas <span style="color:#9aa;font-weight:normal">(<span id="n-filas"></span>)</span></h2>
   <div class="toolbar">
     <select id="filtro-sala">
       <option value="">Todas las salas</option>
-      <option value="Sala de Flora">🌸 Sala Flora</option>
-      <option value="Sala Vege Catamarca">🌱 Sala Vege</option>
-      <option value="Sala C - Automáticas">⚡ Sala C Automáticas</option>
+      <option value="Sala de Flora">🌸 Flora</option>
+      <option value="Sala Vege Catamarca">🌱 Vege</option>
+      <option value="Sala C - Automáticas">⚡ Auto</option>
     </select>
-    <label><input type="checkbox" id="filtro-cosechadas"> mostrar cosechadas</label>
+    <label><input type="checkbox" id="filtro-cosechadas"> cosechadas</label>
   </div>
   <div class="tbody-wrap">
     <table>
-      <tr><th>ID</th><th>Genética</th><th>Sala actual</th><th>Mover a</th><th></th></tr>
+      <tr><th>ID</th><th>Genética</th><th>Sala</th><th>Mover</th><th></th></tr>
       <tbody id="tabla-mover"></tbody>
     </table>
   </div>
 </div>
 
-<div class="panel" style="margin-top:24px">
+<div class="panel" style="margin-top:12px">
   <h2>📋 Tareas y fechas de cultivo</h2>
   <div class="agregar">
     <h3>➕ Agregar tarea</h3>
     <form id="frm-tarea">
-      <input name="titulo" placeholder="Título de la tarea" required>
+      <input name="titulo" placeholder="Título" required>
       <select name="categoria">
         <option value="hacer">✅ hacer</option>
         <option value="comprar">🛒 comprar</option>
         <option value="arreglar">🔧 arreglar</option>
         <option value="otro">• otro</option>
       </select>
-      <input name="fecha" placeholder="Fecha (opcional) DD/MM/AAAA">
+      <input name="fecha" placeholder="Fecha opcional DD/MM/AAAA">
       <input name="detalle" class="full" placeholder="Detalle (opcional)">
       <button type="submit">➕ Agregar tarea</button>
     </form>
@@ -129,27 +134,29 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
   <div class="agregar">
     <h3>➕ Agregar fecha clave</h3>
     <form id="frm-fecha">
-      <input name="titulo" placeholder="Título (ej: Pase a vege)" required>
+      <input name="titulo" placeholder="Título" required>
       <input name="fecha" placeholder="Fecha DD/MM/AAAA" required>
       <input name="detalle" class="full" placeholder="Detalle (opcional)">
       <button type="submit">➕ Agregar fecha</button>
     </form>
   </div>
-  <div class="fechas">
-    <h3>📅 Fechas clave</h3>
-    <table><tr><td class='f'>18/08/2026</td><td><b>Pase masivo a flora</b><div class='det'>96 plantas vege → flora</div></td></tr><tr><td class='f'>17/10/2026</td><td><b>Cosecha estimada flora</b><div class='det'>Ciclo de 60 días desde 18/08</div></td></tr><tr><td class='f'>09/08/2026</td><td><b>Cosecha 1 sala flora</b><div class='det'>1.461 g en stock (6 genéticas)</div></td></tr><tr><td class='f'>02/09/2026</td><td><b>Sustrato inerte</b><div class='det'>Planificado para hoy</div></td></tr></table>
-  </div>
-  <div class="fechas">
-    <h3>📋 Tareas</h3>
-    <div class="tbody-wrap"><table><tr><th></th><th>Tarea</th><th></th></tr><tr class='hecha'><td class='chk'><input type='checkbox' class='chk-tarea' data-key='cultivo' data-titulo='Cargar sustrato inerte' checked ></td><td><b>Cargar sustrato inerte</b><div class='det'>Comprar y reponer en sala</div></td><td class='cat'>🛒 comprar<br><span class='tf'>02/09/2026</span></td></tr></table></div>
+  <div class="grid">
+    <div class="fechas">
+      <h3>📅 Fechas clave</h3>
+      <table><tr class='vencida'><td class='f'>09/08/2026</td><td><b>Cosecha 1 sala flora</b><div class='det'>1.461 g en stock (6 genéticas)</div></td></tr><tr class='vencida'><td class='f'>18/08/2026</td><td><b>Pase masivo a flora</b><div class='det'>96 plantas vege → flora</div></td></tr><tr class='vencida'><td class='f'>02/09/2026</td><td><b>Sustrato inerte</b><div class='det'>Planificado para hoy</div></td></tr><tr class=''><td class='f'>17/10/2026</td><td><b>Cosecha estimada flora</b><div class='det'>Ciclo de 60 días desde 18/08</div></td></tr></table>
+    </div>
+    <div class="fechas">
+      <h3>📋 Tareas</h3>
+      <div class="tbody-wrap"><table><tr class='hecha'><td class='chk'><input type='checkbox' class='chk-tarea' data-key='cultivo' data-titulo='Cargar sustrato inerte' checked ></td><td><b>Cargar sustrato inerte</b> <span class='tf'>02/09/2026</span><div class='det'>🛒 Comprar y reponer en sala</div></td></tr></table></div>
+    </div>
   </div>
 </div>
 
-<div class="sub" style="margin-top:24px">Clave de acceso: 2019 · Generado por Julia 🦞 · Planilla: 🌱 Planilla de Cultivo · Interactivo vía API local :8082</div>
+<div class="footer">Clave 2019 · Generado por Julia 🦞 · API :8082</div>
 <script>
 const API_LOCAL = 'http://127.0.0.1:8082';
 const API_NUBE = 'https://fabrica-api-sviz.onrender.com';
-const API_KEY = 'Fr_88Mf-LBmaw1Daecj';
+const API_KEY = '***';
 let API = API_LOCAL;
 
 async function resolverAPI() {
