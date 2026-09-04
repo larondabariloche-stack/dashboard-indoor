@@ -7,40 +7,40 @@
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:24px; }
-h1 { color:var(--dorado); font-size:1.6rem; }
-.sub { color:#9aa; font-size:.9rem; margin:4px 0 20px; }
-.card { background:#16281b; border:1px solid #2a4a33; border-radius:14px; padding:18px; max-width:720px; margin-bottom:16px; }
-.desc { color:#aab; font-size:.9rem; margin-bottom:14px; }
-.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:12px; margin-bottom:12px; }
-.fechas h3 { color:var(--dorado); font-size:.95rem; margin-bottom:8px; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:36px; }
+h1 { color:var(--dorado); font-size:2.4rem; }
+.sub { color:#9aa; font-size:1.35rem; margin:6px 0 30px; }
+.card { background:#16281b; border:1.5px solid #2a4a33; border-radius:21px; padding:27px; max-width:1080px; margin-bottom:24px; }
+.desc { color:#aab; font-size:1.35rem; margin-bottom:21px; }
+.fechas { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:18px; margin-bottom:18px; }
+.fechas h3 { color:var(--dorado); font-size:1.42rem; margin-bottom:12px; }
 .tbody-wrap { overflow-y:auto; }
-table { width:100%; border-collapse:collapse; font-size:.85rem; }
-td { padding:6px 4px; border-bottom:1px solid #1f3626; vertical-align:top; }
-td.f { white-space:nowrap; color:#c8c8c8; padding-right:12px; }
-td.chk { width:28px; }
-td.cat { white-space:nowrap; color:#c8c8c8; font-size:.78rem; text-align:right; }
-.tf { color:#9aa; font-size:.78rem; }
-.det { color:#778; font-size:.8rem; }
+table { width:100%; border-collapse:collapse; font-size:1.27rem; }
+td { padding:9px 6px; border-bottom:1.5px solid #1f3626; vertical-align:top; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:18px; }
+td.chk { width:42px; }
+td.cat { white-space:nowrap; color:#c8c8c8; font-size:1.17rem; text-align:right; }
+.tf { color:#9aa; font-size:1.17rem; }
+.det { color:#778; font-size:1.2rem; }
 tr.hecha td { opacity:.45; text-decoration:line-through; }
-.volver { display:inline-block; margin-bottom:14px; color:var(--dorado); text-decoration:none; font-weight:700; }
-.chk-tarea { width:16px; height:16px; accent-color:var(--dorado); cursor:pointer; }
-#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:10px; margin-bottom:12px; }
-.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:12px; }
-.agregar h3 { color:var(--dorado); font-size:.9rem; margin-bottom:10px; }
-.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33;
-   border-radius:8px; padding:7px 10px; font-size:.85rem; width:100%; }
+.volver { display:inline-block; margin-bottom:21px; color:var(--dorado); text-decoration:none; font-weight:700; }
+.chk-tarea { width:24px; height:24px; accent-color:var(--dorado); cursor:pointer; }
+#mi-aviso { display:none; background:#1d3a24; border:1.5px solid #3f7a4f; color:#b6e6c3; padding:12px 21px; border-radius:15px; margin-bottom:18px; }
+.agregar { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:21px; margin-bottom:18px; }
+.agregar h3 { color:var(--dorado); font-size:1.35rem; margin-bottom:15px; }
+.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1.5px solid #2a4a33;
+   border-radius:12px; padding:10.5px 15px; font-size:1.27rem; width:100%; }
 .agregar .full { grid-column:1 / -1; }
 .agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none;
-   border-radius:8px; padding:8px; font-weight:700; cursor:pointer; font-size:.85rem; }
+   border-radius:12px; padding:12px; font-weight:700; cursor:pointer; font-size:1.27rem; }
 .agregar button:hover { opacity:.9; }
 </style>
 </head>
 <body>
 <a class="volver" href="fabrica.html">← 🏭 Fábrica La Ronda</a>
 <h1>🛠️ Infraestructura</h1>
-<div class="sub">Instalaciones, equipos, arreglos y compras generales. · Actualizado 04/09/2026 13:00</div>
+<div class="sub">Instalaciones, equipos, arreglos y compras generales. · Actualizado 04/09/2026 13:14</div>
 <div id="mi-aviso"></div>
 <div class="card">
   <div class="agregar">
@@ -76,7 +76,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
     <div class="tbody-wrap"><table><tr><th></th><th>Tarea</th><th></th></tr><tr><td colspan='3' style='color:#778'>Sin tareas todavía.</td></tr></table></div>
   </div>
 </div>
-<div class="sub" style="margin-top:16px">Generado por Julia 🦞</div>
+<div class="sub" style="margin-top:24px">Generado por Julia 🦞</div>
 <script>
 const API_LOCAL = 'http://127.0.0.1:8082';
 const API_NUBE = 'https://fabrica-api-sviz.onrender.com';

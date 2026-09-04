@@ -7,49 +7,49 @@
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:20px; }
-h1 { color:var(--dorado); font-size:1.6rem; margin-bottom:4px; }
-.sub { color:#9aa; font-size:.85rem; margin-bottom:20px; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:20px; }
-.card { background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:14px; text-align:center; }
-.card .n { font-size:1.8rem; font-weight:700; color:var(--dorado); }
-.card .l { font-size:.8rem; color:#aab; }
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.panel { background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:16px; }
-.panel h2 { color:var(--dorado); font-size:1.05rem; margin-bottom:10px; }
-table { width:100%; border-collapse:collapse; font-size:.85rem; }
-th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }
-td { padding:4px 6px; border-bottom:1px solid #1f3626; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:30px; }
+h1 { color:var(--dorado); font-size:2.4rem; margin-bottom:6px; }
+.sub { color:#9aa; font-size:1.27rem; margin-bottom:30px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-bottom:30px; }
+.card { background:#16281b; border:1.5px solid #2a4a33; border-radius:18px; padding:21px; text-align:center; }
+.card .n { font-size:2.7rem; font-weight:700; color:var(--dorado); }
+.card .l { font-size:1.2rem; color:#aab; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.panel { background:#16281b; border:1.5px solid #2a4a33; border-radius:18px; padding:24px; }
+.panel h2 { color:var(--dorado); font-size:1.58rem; margin-bottom:15px; }
+table { width:100%; border-collapse:collapse; font-size:1.27rem; }
+th { text-align:left; color:#c8c8c8; border-bottom:1.5px solid #2a4a33; padding:6px 9px; }
+td { padding:6px 9px; border-bottom:1.5px solid #1f3626; }
 .num { text-align:right; font-variant-numeric:tabular-nums; }
-.barra { background:#0a1510; border-radius:8px; height:14px; margin:8px 0; overflow:hidden; }
+.barra { background:#0a1510; border-radius:12px; height:21px; margin:12px 0; overflow:hidden; }
 .barra > div { background:linear-gradient(90deg,var(--verde),var(--dorado)); height:100%; }
-.alert { background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; padding:10px 14px; border-radius:10px; margin-bottom:16px; font-size:.9rem; }
-.toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
-.toolbar select, .toolbar label { background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:8px; padding:6px 10px; font-size:.85rem; }
-.tbody-wrap { max-height:420px; overflow-y:auto; border:1px solid #1f3626; border-radius:8px; }
-.sel-sala { background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:3px 6px; font-size:.8rem; max-width:160px; }
-.btn-mover { background:var(--dorado); color:#0d2d1a; border:none; border-radius:8px; padding:5px 12px; font-weight:700; cursor:pointer; }
+.alert { background:#3a2a10; border:1.5px solid var(--dorado); color:#ffd97a; padding:15px 21px; border-radius:15px; margin-bottom:24px; font-size:1.35rem; }
+.toolbar { display:flex; gap:15px; align-items:center; flex-wrap:wrap; margin-bottom:15px; }
+.toolbar select, .toolbar label { background:#0f1a12; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:12px; padding:9px 15px; font-size:1.27rem; }
+.tbody-wrap { max-height:630px; overflow-y:auto; border:1.5px solid #1f3626; border-radius:12px; }
+.sel-sala { background:#0f1a12; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:9px; padding:4.5px 9px; font-size:1.2rem; max-width:240px; }
+.btn-mover { background:var(--dorado); color:#0d2d1a; border:none; border-radius:12px; padding:7.5px 18px; font-weight:700; cursor:pointer; }
 .btn-mover:disabled { opacity:.5; cursor:wait; }
-#mi-aviso { display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:10px; margin-bottom:12px; }
-#modo-lectura { display:none; background:#2a1a3a; border:1px solid #7a4fa0; color:#d9b6e6; padding:8px 14px; border-radius:10px; margin-bottom:12px; font-size:.85rem; }
+#mi-aviso { display:none; background:#1d3a24; border:1.5px solid #3f7a4f; color:#b6e6c3; padding:12px 21px; border-radius:15px; margin-bottom:18px; }
+#modo-lectura { display:none; background:#2a1a3a; border:1.5px solid #7a4fa0; color:#d9b6e6; padding:12px 21px; border-radius:15px; margin-bottom:18px; font-size:1.27rem; }
 /* panel tareas/fechas */
-.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:12px; margin-bottom:12px; }
-.fechas h3 { color:var(--dorado); font-size:.95rem; margin-bottom:8px; }
-.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:12px; }
-.agregar h3 { color:var(--dorado); font-size:.9rem; margin-bottom:10px; }
-.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:8px; padding:7px 10px; font-size:.85rem; width:100%; }
+.fechas { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:18px; margin-bottom:18px; }
+.fechas h3 { color:var(--dorado); font-size:1.42rem; margin-bottom:12px; }
+.agregar { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:21px; margin-bottom:18px; }
+.agregar h3 { color:var(--dorado); font-size:1.35rem; margin-bottom:15px; }
+.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:12px; padding:10.5px 15px; font-size:1.27rem; width:100%; }
 .agregar .full { grid-column:1 / -1; }
-.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:8px; padding:8px; font-weight:700; cursor:pointer; font-size:.85rem; }
+.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:12px; padding:12px; font-weight:700; cursor:pointer; font-size:1.27rem; }
 .agregar button:hover { opacity:.9; }
-.chk-tarea { width:15px; height:15px; accent-color:var(--dorado); cursor:pointer; }
-.td-chk { width:24px; }
-dd.det { color:#778; font-size:.78rem; }
-td.f { white-space:nowrap; color:#c8c8c8; padding-right:10px; }
-td.cat { white-space:nowrap; color:#c8c8c8; font-size:.74rem; text-align:right; }
-.tf { color:#9aa; font-size:.75rem; }
+.chk-tarea { width:22.5px; height:22.5px; accent-color:var(--dorado); cursor:pointer; }
+.td-chk { width:36px; }
+dd.det { color:#778; font-size:1.17rem; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:15px; }
+td.cat { white-space:nowrap; color:#c8c8c8; font-size:1.11rem; text-align:right; }
+.tf { color:#9aa; font-size:1.12rem; }
 tr.hecha td { opacity:.45; text-decoration:line-through; }
-@media (max-width:700px) { .grid { grid-template-columns:1fr; } }
+@media (max-width:1050px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -81,16 +81,16 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
   </div>
   <div class="panel">
     <h2>💧 Últimos riegos / registros</h2>
-    <table><tr><th>Fecha</th><th>ID</th><th>Fase</th><th class="num">pH</th><th class="num">EC</th><th>Notas</th></tr><tr><td>03/09/2026</td><td>Sala Vege + Flora</td><td>Vege + Flora</td><td class='num'></td><td class='num'></td><td>⚠️ Aparecieron hojas con bordes mordidos/rotos en vege y flo</td></tr><tr><td>03/09/2026</td><td>Sala Vege + Flora</td><td>Vege + Flora</td><td class='num'></td><td class='num'></td><td>Oídio activo: día 4 de sublimaciones de azufre en sala vege </td></tr><tr><td>13/08/2026</td><td>Sala Vege Catamarca</td><td>Vegetativo</td><td class='num'>5.9</td><td class='num'>1.9</td><td></td></tr><tr><td>05/08/2026</td><td>Sala de Flora</td><td>Flora</td><td class='num'>5.8</td><td class='num'></td><td>Solo agua sin sales</td></tr><tr><td>09/07/2026</td><td>4</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>18</td><td></td><td class='num'></td><td class='num'></td><td>2 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>3</td><td></td><td class='num'></td><td class='num'></td><td>2 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>7</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr></table>
+    <table><tr><th>Fecha</th><th>ID</th><th>Fase</th><th class="num">pH</th><th class="num">EC</th><th>Notas</th></tr><tr><td>04/09/2026</td><td>Sala Vege + Flora</td><td>Vege + Flora</td><td class='num'></td><td class='num'></td><td>Extensión: +1 día de sublimaciones de azufre en vege y flora</td></tr><tr><td>03/09/2026</td><td>Sala Vege + Flora</td><td>Vege + Flora</td><td class='num'></td><td class='num'></td><td>⚠️ Aparecieron hojas con bordes mordidos/rotos en vege y flo</td></tr><tr><td>03/09/2026</td><td>Sala Vege + Flora</td><td>Vege + Flora</td><td class='num'></td><td class='num'></td><td>Oídio activo: día 4 de sublimaciones de azufre en sala vege </td></tr><tr><td>13/08/2026</td><td>Sala Vege Catamarca</td><td>Vegetativo</td><td class='num'>5.9</td><td class='num'>1.9</td><td></td></tr><tr><td>05/08/2026</td><td>Sala de Flora</td><td>Flora</td><td class='num'>5.8</td><td class='num'></td><td>Solo agua sin sales</td></tr><tr><td>09/07/2026</td><td>4</td><td></td><td class='num'></td><td class='num'></td><td>4 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>18</td><td></td><td class='num'></td><td class='num'></td><td>2 cortes de poda apical (Achu)</td></tr><tr><td>09/07/2026</td><td>3</td><td></td><td class='num'></td><td class='num'></td><td>2 cortes de poda apical (Achu)</td></tr></table>
   </div>
 </div>
 
-<div class="panel" style="margin-top:16px">
+<div class="panel" style="margin-top:24px">
   <h2>🌾 Registro de cosechas</h2>
   <table><tr><th>Fecha</th><th>Genética</th><th class="num">Peso secada (g)</th><th class="num">Altas (g)</th><th class="num">Bajas (g)</th><th class="num">Total stock (g)</th><th>Estado</th></tr><tr><td>09/08/2026</td><td>tropicana</td><td class='num'>509</td><td class='num'>-</td><td class='num'>-</td><td class='num'>509</td><td>OK</td></tr><tr><td>09/08/2026</td><td>kings tart</td><td class='num'>174</td><td class='num'>-</td><td class='num'>-</td><td class='num'>174</td><td>OK</td></tr><tr><td>09/08/2026</td><td>sur tangie</td><td class='num'>371</td><td class='num'>-</td><td class='num'>-</td><td class='num'>371</td><td>OK</td></tr><tr><td>09/08/2026</td><td>california orange</td><td class='num'>107</td><td class='num'>-</td><td class='num'>-</td><td class='num'>107</td><td>OK</td></tr><tr><td>09/08/2026</td><td>jacks lemonade</td><td class='num'>156</td><td class='num'>-</td><td class='num'>-</td><td class='num'>156</td><td>OK</td></tr><tr><td>09/08/2026</td><td>auto (Crítica al Auto XXL)</td><td class='num'>144</td><td class='num'>-</td><td class='num'>-</td><td class='num'>144</td><td>OK</td></tr></table>
 </div>
 
-<div class="panel" style="margin-top:16px">
+<div class="panel" style="margin-top:24px">
   <h2>🔄 Mover plantas de sala <span style="color:#9aa;font-weight:normal">(<span id="n-filas"></span> — actualiza la planilla automáticamente)</span></h2>
   <div class="toolbar">
     <select id="filtro-sala">
@@ -109,7 +109,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
   </div>
 </div>
 
-<div class="panel" style="margin-top:16px">
+<div class="panel" style="margin-top:24px">
   <h2>📋 Tareas y fechas de cultivo</h2>
   <div class="agregar">
     <h3>➕ Agregar tarea</h3>
@@ -145,7 +145,7 @@ tr.hecha td { opacity:.45; text-decoration:line-through; }
   </div>
 </div>
 
-<div class="sub" style="margin-top:16px">Clave de acceso: 2019 · Generado por Julia 🦞 · Planilla: 🌱 Planilla de Cultivo · Interactivo vía API local :8082</div>
+<div class="sub" style="margin-top:24px">Clave de acceso: 2019 · Generado por Julia 🦞 · Planilla: 🌱 Planilla de Cultivo · Interactivo vía API local :8082</div>
 <script>
 const API_LOCAL = 'http://127.0.0.1:8082';
 const API_NUBE = 'https://fabrica-api-sviz.onrender.com';

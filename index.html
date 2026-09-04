@@ -7,52 +7,52 @@
 <style>
 :root { --verde:#0d2d1a; --dorado:#d29914; }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:24px; }
-h1 { color:var(--dorado); font-size:1.9rem; }
-.sub { color:#9aa; font-size:.9rem; margin:4px 0 24px; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:20px; }
-.area { background:#16281b; border:1px solid #2a4a33; border-radius:16px; padding:22px;
-         display:flex; flex-direction:column; gap:14px; }
-.head { display:flex; align-items:center; gap:14px; text-decoration:none; color:#e8e8e8; }
-.ico { font-size:2.6rem; }
-.t { font-size:1.5rem; font-weight:700; color:var(--dorado); }
-.flecha { margin-left:auto; color:var(--dorado); font-size:1.5rem; }
-.desc { color:#aab; font-size:.9rem; }
-.pend { align-self:flex-start; background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a;
-         font-size:.8rem; font-weight:700; padding:4px 12px; border-radius:999px; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:36px; }
+h1 { color:var(--dorado); font-size:2.85rem; }
+.sub { color:#9aa; font-size:1.35rem; margin:6px 0 36px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(510px,1fr)); gap:30px; }
+.area { background:#16281b; border:1.5px solid #2a4a33; border-radius:24px; padding:33px;
+         display:flex; flex-direction:column; gap:21px; }
+.head { display:flex; align-items:center; gap:21px; text-decoration:none; color:#e8e8e8; }
+.ico { font-size:3.9rem; }
+.t { font-size:2.25rem; font-weight:700; color:var(--dorado); }
+.flecha { margin-left:auto; color:var(--dorado); font-size:2.25rem; }
+.desc { color:#aab; font-size:1.35rem; }
+.pend { align-self:flex-start; background:#3a2a10; border:1.5px solid var(--dorado); color:#ffd97a;
+         font-size:1.2rem; font-weight:700; padding:6px 18px; border-radius:1498.5px; }
 .pend.ok { background:#1d3a24; border-color:#3f7a4f; color:#b6e6c3; }
-.fechas { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; }
-.fechas h3 { color:var(--dorado); font-size:.95rem; margin-bottom:8px; }
+.fechas { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:21px; }
+.fechas h3 { color:var(--dorado); font-size:1.42rem; margin-bottom:12px; }
 /* panel agregar directo */
-.agregar { background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:14px; }
-.agregar h3 { color:var(--dorado); font-size:.95rem; margin-bottom:10px; }
-.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:8px; padding:7px 10px; font-size:.85rem; width:100%; }
+.agregar { background:#0f1a12; border:1.5px solid #1f3626; border-radius:15px; padding:21px; margin-bottom:21px; }
+.agregar h3 { color:var(--dorado); font-size:1.42rem; margin-bottom:15px; }
+.agregar form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.agregar input, .agregar select { background:#16281b; color:#e8e8e8; border:1.5px solid #2a4a33; border-radius:12px; padding:10.5px 15px; font-size:1.27rem; width:100%; }
 .agregar .full { grid-column:1 / -1; }
-.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:8px; padding:8px; font-weight:700; cursor:pointer; font-size:.85rem; }
+.agregar button { grid-column:1 / -1; background:var(--dorado); color:#0d2d1a; border:none; border-radius:12px; padding:12px; font-weight:700; cursor:pointer; font-size:1.27rem; }
 .agregar button:hover { opacity:.9; }
-table { width:100%; border-collapse:collapse; font-size:.85rem; }
-td { padding:6px 4px; border-bottom:1px solid #1f3626; vertical-align:top; }
-td.f { white-space:nowrap; color:#c8c8c8; padding-right:12px; }
-.det { color:#778; font-size:.8rem; }
-.entrar { display:inline-block; margin-top:4px; background:var(--dorado); color:#0d2d1a;
-           text-decoration:none; font-weight:700; font-size:.95rem; border-radius:10px;
-           padding:10px 16px; text-align:center; }
+table { width:100%; border-collapse:collapse; font-size:1.27rem; }
+td { padding:9px 6px; border-bottom:1.5px solid #1f3626; vertical-align:top; }
+td.f { white-space:nowrap; color:#c8c8c8; padding-right:18px; }
+.det { color:#778; font-size:1.2rem; }
+.entrar { display:inline-block; margin-top:6px; background:var(--dorado); color:#0d2d1a;
+           text-decoration:none; font-weight:700; font-size:1.42rem; border-radius:15px;
+           padding:15px 24px; text-align:center; }
 /* estilos para listar tareas en la portada raíz */
-th { text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }
-.tbody-wrap { max-height:220px; overflow-y:auto; border:1px solid #1f3626; border-radius:8px; }
-.chk-tarea { width:15px; height:15px; accent-color:var(--dorado); cursor:pointer; }
-td.chk { width:24px; }
-td.cat { white-space:nowrap; color:#c8c8c8; font-size:.74rem; text-align:right; }
-.tf { color:#9aa; font-size:.75rem; }
+th { text-align:left; color:#c8c8c8; border-bottom:1.5px solid #2a4a33; padding:6px 9px; }
+.tbody-wrap { max-height:330px; overflow-y:auto; border:1.5px solid #1f3626; border-radius:12px; }
+.chk-tarea { width:22.5px; height:22.5px; accent-color:var(--dorado); cursor:pointer; }
+td.chk { width:36px; }
+td.cat { white-space:nowrap; color:#c8c8c8; font-size:1.11rem; text-align:right; }
+.tf { color:#9aa; font-size:1.12rem; }
 tr.hecha td { opacity:.45; text-decoration:line-through; }
-.det-sec { color:#9aa; font-size:.74rem; }
-@media (max-width:700px) { .grid { grid-template-columns:1fr; } }
+.det-sec { color:#9aa; font-size:1.11rem; }
+@media (max-width:1050px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 <h1>💊🏭 La Ronda Bariloche</h1>
-<div class="sub">Panel central · Actualizado 04/09/2026 13:00 · Clave 2019 · Generado por Julia 🦞</div>
+<div class="sub">Panel central · Actualizado 04/09/2026 13:14 · Clave 2019 · Generado por Julia 🦞</div>
 
   <div class="agregar">
     <h3>➕ Agregar directo (elegí sección)</h3>
@@ -166,7 +166,7 @@ let API = API_LOCAL;
       <a class="entrar" href="fabrica.html">Entrar a Fábrica ➜</a>
     </div>
 </div>
-<div class="sub" style="margin-top:20px">Datos editables en fabrica.json · Interactivo vía API local :8082</div>
+<div class="sub" style="margin-top:30px">Datos editables en fabrica.json · Interactivo vía API local :8082</div>
 <script>
 (() => {
   const API_LOCAL = 'http://127.0.0.1:8082';
