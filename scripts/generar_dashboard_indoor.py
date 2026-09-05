@@ -87,24 +87,53 @@ def main():
 <style>
 :root {{ --verde:#0d2d1a; --dorado:#d29914; }}
 * {{ box-sizing:border-box; margin:0; padding:0; }}
-body {{ font-family:'Segoe UI',system-ui,sans-serif; background:#0f1a12; color:#e8e8e8; padding:20px; }}
-h1 {{ color:var(--dorado); font-size:1.6rem; margin-bottom:4px; }}
-.sub {{ color:#9aa; font-size:.85rem; margin-bottom:20px; }}
+body {{ font-family:'Segoe UI',system-ui,sans-serif; background:#0a120d; color:#e8e8e8; padding:18px; }}
+h1 {{ color:var(--dorado); font-size:2.2rem; margin-bottom:6px; }}
+.sub {{ color:#9aa; font-size:1.1rem; margin-bottom:18px; }}
+.volver {{ display:inline-block; margin-bottom:12px; color:var(--dorado); text-decoration:none; font-weight:700; font-size:1.1rem; }}
 .cards {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:20px; }}
 .card {{ background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:14px; text-align:center; }}
-.card .n {{ font-size:1.8rem; font-weight:700; color:var(--dorado); }}
-.card .l {{ font-size:.8rem; color:#aab; }}
+.card .n {{ font-size:2.4rem; font-weight:700; color:var(--dorado); line-height:1; }}
+.card .l {{ font-size:1.05rem; color:#aab; }}
 .grid {{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }}
 .panel {{ background:#16281b; border:1px solid #2a4a33; border-radius:12px; padding:16px; }}
-.panel h2 {{ color:var(--dorado); font-size:1.05rem; margin-bottom:10px; }}
-table {{ width:100%; border-collapse:collapse; font-size:.85rem; }}
+.panel h2 {{ color:var(--dorado); font-size:1.4rem; margin-bottom:10px; }}
+table {{ width:100%; border-collapse:collapse; font-size:1.05rem; }}
 th {{ text-align:left; color:#c8c8c8; border-bottom:1px solid #2a4a33; padding:4px 6px; }}
 td {{ padding:4px 6px; border-bottom:1px solid #1f3626; }}
 .num {{ text-align:right; font-variant-numeric:tabular-nums; }}
-.barra {{ background:#0a1510; border-radius:8px; height:14px; margin:8px 0; overflow:hidden; }}
+.barra {{ background:#0a1510; border-radius:8px; height:16px; margin:10px 0; overflow:hidden; }}
 .barra > div {{ background:linear-gradient(90deg,var(--verde),var(--dorado)); height:100%; }}
-.alert {{ background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; padding:10px 14px; border-radius:10px; margin-bottom:16px; font-size:.9rem; }}
-@media (max-width:700px) {{ .grid {{ grid-template-columns:1fr; }} }}
+.alert {{ background:#3a2a10; border:1px solid var(--dorado); color:#ffd97a; padding:10px 14px; border-radius:10px; margin-bottom:16px; font-size:1.15rem; }}
+.toolbar {{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }}
+.toolbar select, .toolbar label {{ background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:6px 10px; font-size:1.05rem; }}
+.tbody-wrap {{ max-height:420px; overflow-y:auto; border:1px solid #1f3626; border-radius:8px; }}
+.sel-sala {{ background:#0f1a12; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:4px 6px; font-size:1rem; max-width:220px; }}
+.btn-mover {{ background:var(--dorado); color:#0d2d1a; border:none; border-radius:6px; padding:6px 12px; font-weight:700; cursor:pointer; font-size:1rem; }}
+.btn-mover:disabled {{ opacity:.5; cursor:wait; }}
+#mi-aviso {{ display:none; background:#1d3a24; border:1px solid #3f7a4f; color:#b6e6c3; padding:8px 14px; border-radius:8px; margin-bottom:12px; font-size:1.05rem; }}
+#modo-lectura {{ display:none; background:#2a1a3a; border:1px solid #7a4fa0; color:#d9b6e6; padding:8px 14px; border-radius:8px; margin-bottom:12px; font-size:1.05rem; }}
+.fechas {{ background:#0f1a12; border:1px solid #1f3626; border-radius:8px; padding:10px; margin-bottom:12px; }}
+.fechas h3 {{ color:var(--dorado); font-size:1.3rem; margin-bottom:8px; }}
+.agregar {{ background:#0f1a12; border:1px solid #1f3626; border-radius:10px; padding:14px; margin-bottom:14px; }}
+.agregar h3 {{ color:var(--dorado); font-size:1.25rem; margin-bottom:10px; }}
+.agregar form {{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }}
+.agregar input, .agregar select {{ background:#16281b; color:#e8e8e8; border:1px solid #2a4a33; border-radius:6px; padding:8px 10px; font-size:1.05rem; width:100%; }}
+.agregar .full {{ grid-column:span 2; }}
+.agregar button {{ grid-column:span 4; background:var(--dorado); color:#0d2d1a; border:none; border-radius:6px; padding:10px; font-weight:700; cursor:pointer; font-size:1.1rem; }}
+.agregar button:hover {{ opacity:.9; }}
+.chk-tarea {{ width:20px; height:20px; accent-color:var(--dorado); cursor:pointer; }}
+td.chk {{ width:32px; }}
+td.f {{ white-space:nowrap; color:#c8c8c8; padding-right:10px; font-size:1rem; }}
+.tf {{ color:#9aa; font-size:1rem; }}
+.det {{ color:#778; font-size:1rem; }}
+tr.hecha td {{ opacity:.45; text-decoration:line-through; }}
+tr.vencida td.f {{ color:#ff6b6b; font-weight:700; }}
+tr.proxima td.f {{ color:#ffd97a; font-weight:700; }}
+.empty {{ color:#667; font-style:italic; }}
+.footer {{ margin-top:14px; color:#9aa; font-size:1rem; }}
+@media (max-width:1100px) {{ .agregar form {{ grid-template-columns:1fr 1fr; }} .agregar .full {{ grid-column:span 2; }} .agregar button {{ grid-column:span 2; }} }}
+@media (max-width:760px) {{ .grid {{ grid-template-columns:1fr; }} .cards {{ grid-template-columns:repeat(2,1fr); }} .agregar form {{ grid-template-columns:1fr; }} .agregar .full {{ grid-column:1 / -1; }} .agregar button {{ grid-column:1 / -1; }} }}
 </style>
 </head>
 <body>
